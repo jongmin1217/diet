@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">diet</string>
+    <string name="intro_text">소영이의\n다이어트를\n응원합니다!</string>
+    <string name="diet">Diet</string>
 </resources>
