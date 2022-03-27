@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bellminp.diet">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".di.DietApplication"
         android:allowBackup="true"
@@ -31,6 +33,14 @@
             android:screenOrientation="portrait"
             android:exported="false"
             tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
+
+        <activity
+            android:name=".ui.add_profile.AddProfileActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Diet" />
     </application>
 

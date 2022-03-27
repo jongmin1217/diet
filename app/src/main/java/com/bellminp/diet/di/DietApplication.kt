@@ -12,7 +12,7 @@ import timber.log.Timber
 @HiltAndroidApp
 class DietApplication : Application() {
 
-    private val shared = SharedPreferenceCtrl()
+    val shared = SharedPreferenceCtrl()
 
     companion object {
         lateinit var mInstance: DietApplication

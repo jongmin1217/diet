@@ -9,4 +9,20 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#f9eeee</color>
     <color name="intro_bar">#aba198</color>
+
+    <color name="color_background">#f2f3f5</color>
+
+    <color name="color_icn">#d1d4d9</color>
+    <color name="color_icn_select">#353d4a</color>
+
+    <color name="top_background">#F2f2f3f5</color>
+
+    <color name="ok_btn">#007AFF</color>
+
+    <color name="color_gray">#e1e1e1</color>
+    <color name="color_gray_2">#545454</color>
+    <color name="color_gray_3">#808080</color>
+    <color name="color_gray_4">#f4f4f4</color>
+    <color name="color_gray_5">#F3F3F3</color>
+    <color name="color_gray_6">#262626</color>
 </resources>

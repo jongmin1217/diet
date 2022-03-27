@@ -3,11 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/shape_bottom_radius.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_color.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/intro.xml" value="0.4064814814814815" />
         <entry key="app/src/main/res/drawable/intro_image.xml" value="0.18958333333333333" />
+        <entry key="app/src/main/res/drawable/loading.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/selector_calendar.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/drawable/selector_female.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/selector_graph.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/drawable/selector_male.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/selector_picture.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/drawable/selector_profile.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_check_female.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_check_male.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_circle_add_image.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_circle_calendar.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_disable_button.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_enable_button.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_line_top.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_main_bottom.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_uncheck_female.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_uncheck_male.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_white_8.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.4064814814814815" />
+        <entry key="app/src/main/res/layout/activity_add_profile.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.39492753623188404" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.39492753623188404" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_graph.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/fragment_slide.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/item_bottom_basic.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_bottom_basic.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_bottom_date.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_top.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/menu/bottom_navigation_color.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>

@@ -1,21 +1,33 @@
 package com.bellminp.diet.ui.base
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDialog
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.bellminp.diet.R
 import timber.log.Timber
 
 abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes val layoutId: Int) : AppCompatActivity() {
 
     abstract val viewModel: VM
     lateinit var binding: B
+
+    lateinit var progressDialog: Dialog
+    lateinit var frameAnimation: AnimationDrawable
+    lateinit var ivLoading: ImageView
 
     abstract fun initBinding()
 
@@ -27,6 +39,20 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
 
         initBinding()
         initViewModelObserve()
+        initValue()
+    }
+
+    private fun initValue(){
+        progressDialog = AppCompatDialog(this)
+        progressDialog.setCancelable(false)
+        progressDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        progressDialog.setContentView(R.layout.dialog_loading)
+
+        ivLoading = progressDialog.findViewById(R.id.ivLoading) as ImageView
+        frameAnimation = ivLoading.background as AnimationDrawable
+        ivLoading.post {
+            frameAnimation.start()
+        }
     }
 
     open fun initViewModelObserve(){
@@ -38,6 +64,34 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
             showToast.observe(this@BaseActivity, { text->
                 shortShowToast(text)
             })
+
+            showLoading.observe(this@BaseActivity, { value->
+                if(value) showProgressDialog()
+                else hideProgressDialog()
+            })
+        }
+    }
+
+    fun showProgressDialog() {
+        if(!progressDialog.isShowing){
+            progressDialog.show()
+            ivLoading.post {
+                frameAnimation.start()
+            }
+        }
+    }
+
+    fun hideProgressDialog() {
+        ivLoading.run {
+            postDelayed({
+                if (progressDialog.isShowing){
+                    progressDialog.dismiss()
+                    progressDialog.cancel()
+                }
+                ivLoading.post {
+                    frameAnimation.stop()
+                }
+            }, 500)
         }
     }
 

@@ -2,4 +2,52 @@
     <string name="app_name">diet</string>
     <string name="intro_text">소영이의\n다이어트를\n응원합니다!</string>
     <string name="diet">Diet</string>
+    <string name="calendar">캘린더</string>
+    <string name="graph">그래프</string>
+    <string name="slide">슬라이드</string>
+    <string name="profile">프로필</string>
+
+    <string name="title_calendar">소영이의 다이어트 일지</string>
+    <string name="title_graph">소영이 몸무게 그래프</string>
+    <string name="title_slide">소영이 뱃살 슬라이드</string>
+    <string name="title_profile">소영이 프로필</string>
+
+    <string name="nickname_empty">닉네임을 설정해 주세요.</string>
+
+    <string name="add_profile">프로필 등록하기</string>
+    <string name="add_profile_title">프로필 등록</string>
+
+    <string name="profile_edit">프로필 수정</string>
+
+    <string name="add_profile_text_profile_img">프로필 사진 (선택)</string>
+    <string name="add_profile_text_nickname">닉네임</string>
+    <string name="add_profile_text_height">키</string>
+    <string name="add_profile_text_init_weight">시작 몸무게</string>
+    <string name="add_profile_text_goal_weight">목표 몸무게</string>
+    <string name="add_profile_text_gender">성별</string>
+    <string name="add_profile_text_birth">생년월일</string>
+
+    <string name="cm">cm</string>
+    <string name="kg">kg</string>
+
+    <string name="cancel">취소</string>
+    <string name="config">확인</string>
+
+    <string name="edit">수정</string>
+    <string name="delete">삭제</string>
+
+    <string name="folder">폴더</string>
+
+    <string name="add_profile_text_nickname_hint">닉네임을 입력해 주세요 (최대 15자)</string>
+    <string name="add_profile_text_height_hint">키를 거짓말 없이 입력하세요 (확인할거에요)</string>
+    <string name="add_profile_text_init_weight_hint">다이어트 시작 몸무게를 입력해 주세요.</string>
+    <string name="add_profile_text_goal_weight_hint">다이어트 목표 몸무게를 입력해 주세요.</string>
+
+    <string name="profile_help">프로필을 등록하고 여러가지 정보들을 확인해 보세요.\n대신 거짓으로 작성하면 양심에 털나는거 알죠??\n특히 키 올림해서 작성하지 마세요.</string>
+
+
+    <string name="test_1">main</string>
+    <string name="test_2">graph</string>
+    <string name="test_3">slide</string>
+    <string name="test_4">profile</string>
 </resources>
