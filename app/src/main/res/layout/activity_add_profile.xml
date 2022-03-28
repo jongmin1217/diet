@@ -190,10 +190,101 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_nickname"
+                    android:id="@+id/layout_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/layout_gender"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/shape_white_8"
+                    android:layout_marginTop="16dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textColor="@color/color_icn_select"
+                        android:text="@string/add_profile_text_type"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_diet"
+                        app:layout_constraintTop_toBottomOf="@id/tv_type"
+                        android:button="@null"
+                        android:background="@drawable/selector_diet"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/cb_bulk_up"
+                        android:checked="@={vm.checkDiet}"
+                        />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_bulk_up"
+                        app:layout_constraintTop_toBottomOf="@id/tv_type"
+                        android:button="@null"
+                        android:background="@drawable/selector_gym"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/cb_diet"
+                        android:checked="@={vm.checkBulkUp}"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_diet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/cb_diet"
+                        app:layout_constraintStart_toStartOf="@id/cb_diet"
+                        app:layout_constraintEnd_toEndOf="@id/cb_diet"
+                        android:text="@string/diet_text"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_icn_select"
+                        android:layout_marginTop="6dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_bulk_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/cb_bulk_up"
+                        app:layout_constraintStart_toStartOf="@id/cb_bulk_up"
+                        app:layout_constraintEnd_toEndOf="@id/cb_bulk_up"
+                        android:text="@string/bulk_up"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_icn_select"
+                        android:layout_marginTop="6dp"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_bulk_up"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_nickname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/layout_type"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="25dp"
@@ -503,6 +594,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@{vm.edit ? @string/profile_edit : @string/add_profile_title}"
+            android:onClick="@{()->vm.postClick()}"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

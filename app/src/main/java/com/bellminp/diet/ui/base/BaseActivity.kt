@@ -69,10 +69,14 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
                 if(value) showProgressDialog()
                 else hideProgressDialog()
             })
+
+            finishView.observe(this@BaseActivity, {
+                finish()
+            })
         }
     }
 
-    fun showProgressDialog() {
+    private fun showProgressDialog() {
         if(!progressDialog.isShowing){
             progressDialog.show()
             ivLoading.post {
@@ -81,7 +85,7 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
         }
     }
 
-    fun hideProgressDialog() {
+    private fun hideProgressDialog() {
         ivLoading.run {
             postDelayed({
                 if (progressDialog.isShowing){

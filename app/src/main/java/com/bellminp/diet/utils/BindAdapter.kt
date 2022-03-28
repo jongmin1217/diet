@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bellminp.diet.R
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 object BindAdapter {
 
@@ -14,6 +15,8 @@ object BindAdapter {
         url?.let {
             Glide.with(imageView)
                 .load(it)
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(imageView)
         }
     }
@@ -26,6 +29,8 @@ object BindAdapter {
         }else{
             Glide.with(imageView)
                 .load(url)
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(imageView)
         }
     }

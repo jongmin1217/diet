@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:opacity="opaque" android:layout_height="wrap_content" android:layout_width="wrap_content">
+
+    <item
+        android:height="80dp"
+        android:width="80dp"
+        >
+
+        <shape android:shape="rectangle">
+            <solid
+                android:color="@color/color_background">
+            </solid>
+
+            <corners
+                android:radius="100dp">
+            </corners>
+        </shape>
+    </item>
+
+
+
+    <item
+        android:height="56dp"
+        android:width="56dp"
+        android:drawable="@drawable/img_gym"
+        android:gravity="center"
+        tools:ignore="UnusedAttribute" />
+</layer-list>

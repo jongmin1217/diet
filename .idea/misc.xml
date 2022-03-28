@@ -9,12 +9,16 @@
         <entry key="app/src/main/res/drawable/intro_image.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/drawable/loading.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/selector_calendar.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/drawable/selector_diet.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/selector_female.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/selector_graph.xml" value="0.24635416666666668" />
+        <entry key="app/src/main/res/drawable/selector_gym.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/selector_male.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/selector_picture.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/drawable/selector_profile.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_check_diet.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_check_female.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_check_gym.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_check_male.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_circle_add_image.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_circle_calendar.xml" value="0.4009259259259259" />
@@ -22,7 +26,9 @@
         <entry key="app/src/main/res/drawable/shape_enable_button.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_line_top.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_main_bottom.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_uncheck_diet.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_uncheck_female.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_uncheck_gym.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_uncheck_male.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_white_8.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.4064814814814815" />

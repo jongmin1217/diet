@@ -51,5 +51,11 @@ class Utils {
                 e.printStackTrace()
             }
         }
+
+        fun deleteProfile(){
+            val previousFile =
+                File("data/data/" + BuildConfig.APPLICATION_ID + "/app_profile_image/profile.jpg")
+            if (previousFile.exists()) previousFile.delete()
+        }
     }
 }

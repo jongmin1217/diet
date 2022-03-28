@@ -15,8 +15,10 @@ import com.bellminp.diet.ui.dialog.BottomBasicViewModel
 import com.bellminp.diet.ui.dialog.BottomDateDialog
 import com.bellminp.diet.ui.dialog.BottomDateViewModel
 import com.bellminp.diet.ui.top.TopViewModel
+import com.bellminp.diet.utils.Constants
 import com.esafirm.imagepicker.features.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.Console
 import java.io.File
 
 @AndroidEntryPoint
@@ -42,11 +44,18 @@ class AddProfileActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        topViewModel.btnBackVisible.value = true
-        topViewModel.titleText.value =
-            DietApplication.mInstance.resources.getString(R.string.add_profile_title)
+        intent.getStringExtra(Constants.TYPE)?.let {
+            topViewModel.btnBackVisible.value = true
+            topViewModel.titleText.value = if(it == Constants.ADD) DietApplication.mInstance.resources.getString(R.string.add_profile_title)
+            else {
+                viewModel.initEditData()
+                DietApplication.mInstance.resources.getString(R.string.profile_edit)
+            }
 
-        initListener()
+            viewModel.edit.value = it == Constants.EDIT
+
+            initListener()
+        }
     }
 
     private fun initListener() {

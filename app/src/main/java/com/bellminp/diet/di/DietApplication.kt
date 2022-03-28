@@ -1,16 +1,21 @@
 package com.bellminp.diet.di
 
 import android.app.Application
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.util.Log
 import androidx.annotation.NonNull
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bellminp.diet.common.shared.SharedPreferenceCtrl
+import com.bellminp.diet.utils.Constants
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
 class DietApplication : Application() {
+
+    private val profileIntent = Intent(Constants.PROFILE_INTENT)
 
     val shared = SharedPreferenceCtrl()
 
@@ -27,6 +32,11 @@ class DietApplication : Application() {
         mInstance = this
         setUpTimber()
         initShared()
+    }
+
+    fun sendProfileEvent(type : String){
+        profileIntent.putExtra(Constants.TYPE,type)
+        LocalBroadcastManager.getInstance(this).sendBroadcast(profileIntent)
     }
 
     private fun initShared(){

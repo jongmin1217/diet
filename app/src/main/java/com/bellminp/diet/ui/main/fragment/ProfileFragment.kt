@@ -1,19 +1,32 @@
 package com.bellminp.diet.ui.main.fragment
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bellminp.diet.R
 import com.bellminp.diet.databinding.FragmentGraphBinding
 import com.bellminp.diet.databinding.FragmentProfileBinding
 import com.bellminp.diet.ui.add_profile.AddProfileActivity
 import com.bellminp.diet.ui.base.BaseFragment
+import com.bellminp.diet.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val viewModel by activityViewModels<ProfileViewModel>()
+
+    private val profileReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            intent?.let {
+                viewModel.refreshProfile()
+            }
+        }
+    }
 
     override fun initBinding() {
         binding.vm = viewModel
@@ -25,9 +38,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R
         initListener()
     }
 
+    override fun onDestroy() {
+        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(profileReceiver)
+        super.onDestroy()
+    }
+
     private fun initListener(){
+        LocalBroadcastManager.getInstance(context!!).registerReceiver(profileReceiver, IntentFilter(Constants.PROFILE_INTENT))
+
         binding.btnAddProfile.setOnClickListener {
-            startActivity(Intent(context,AddProfileActivity::class.java))
+            val intent = Intent(context,AddProfileActivity::class.java)
+            intent.putExtra(Constants.TYPE, if(viewModel.nickname.value != null) Constants.EDIT else Constants.ADD)
+            startActivity(intent)
         }
     }
 }

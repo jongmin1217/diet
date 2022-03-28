@@ -3,6 +3,7 @@ package com.bellminp.diet.ui.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bellminp.diet.BuildConfig
 import com.bellminp.diet.ui.data.BottomSheetData
 import com.bellminp.diet.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
@@ -21,8 +22,12 @@ abstract class BaseViewModel : ViewModel() {
     private val _showLoading = SingleLiveEvent<Boolean>()
     val showLoading: LiveData<Boolean> get() = _showLoading
 
+    private val _finishView = SingleLiveEvent<Unit>()
+    val finishView: LiveData<Unit> get() = _finishView
+
     private val compositeDisposable = CompositeDisposable()
 
+    val profileUrl = "data/data/" + BuildConfig.APPLICATION_ID + "/app_profile_image/profile.jpg"
 
     fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
@@ -43,5 +48,9 @@ abstract class BaseViewModel : ViewModel() {
 
     fun showLoading(value: Boolean) {
         _showLoading.value = value
+    }
+
+    fun finishView(){
+        _finishView.value = Unit
     }
 }
