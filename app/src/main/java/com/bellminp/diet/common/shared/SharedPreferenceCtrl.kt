@@ -89,7 +89,7 @@ class SharedPreferenceCtrl {
                 val nowYear = Utils.getYear()
                 return (nowYear - year) + 1
             }
-
+            return null
         }
     }
 
