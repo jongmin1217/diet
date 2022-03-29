@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.412962962962963" />
         <entry key="app/src/main/res/drawable-v24/shape_bottom_radius.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/bottom_navigation_color.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/intro.xml" value="0.4064814814814815" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/drawable/shape_circle_calendar.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_disable_button.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_enable_button.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_line_8.xml" value="0.412962962962963" />
         <entry key="app/src/main/res/drawable/shape_line_top.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_main_bottom.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_uncheck_diet.xml" value="0.41333333333333333" />
@@ -41,8 +43,11 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/fragment_slide.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/item_bottom_basic.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/item_calendar.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/layout_bottom_basic.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/layout_bottom_date.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_bottom_month.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/layout_calendar.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/layout_top.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/menu/bottom_navigation_color.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.4036458333333333" />

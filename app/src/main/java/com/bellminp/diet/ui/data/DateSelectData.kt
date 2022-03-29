@@ -7,3 +7,8 @@ data class DateSelectData(
     val month : Int,
     val day : Int
 )
+
+data class MonthSelectData(
+    val year : Int,
+    val month : Int
+)

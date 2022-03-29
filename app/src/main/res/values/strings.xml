@@ -42,6 +42,9 @@
 
     <string name="folder">폴더</string>
 
+    <string name="year">년</string>
+    <string name="month">월</string>
+
     <string name="add_profile_complete">프로필 등록이 완료 됐습니다.</string>
 
     <string name="add_profile_text_nickname_hint">닉네임을 입력해 주세요 (최대 15자)</string>
@@ -51,6 +54,13 @@
 
     <string name="profile_help">프로필을 등록하고 여러가지 정보들을 확인해 보세요.\n대신 거짓으로 작성하면 양심에 털나는거 알죠??\n특히 키 올림해서 작성하지 마세요.</string>
 
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="sunday">일</string>
 
     <string name="test_1">main</string>
     <string name="test_2">graph</string>

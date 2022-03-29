@@ -1,5 +1,6 @@
 package com.bellminp.diet.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
@@ -12,9 +13,11 @@ import android.os.Build
 import android.provider.MediaStore
 import com.bellminp.diet.BuildConfig
 import com.bellminp.diet.di.DietApplication
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Utils {
@@ -24,6 +27,26 @@ class Utils {
         fun getMonth(): Int = Calendar.getInstance().get(Calendar.MONTH) + 1
 
         fun getDay(): Int = Calendar.getInstance().get(Calendar.DATE)
+
+        fun beforeYear(year : Int, month : Int) : Int{
+            return if(month == 1) year -1 else year
+        }
+
+        fun beforeMonth(month : Int) : Int{
+            return if(month == 1) 12 else month - 1
+        }
+
+        fun afterYear(year : Int, month : Int) : Int{
+            return if(month == 12) year + 1 else year
+        }
+
+        fun afterMonth(month : Int) : Int{
+            return if(month == 12) 1 else month + 1
+        }
+
+        fun dateText(value : Int) : String{
+            return if (value < 10) "0$value" else value.toString()
+        }
 
         fun saveProfile(uri : Uri){
             try {
@@ -56,6 +79,34 @@ class Utils {
             val previousFile =
                 File("data/data/" + BuildConfig.APPLICATION_ID + "/app_profile_image/profile.jpg")
             if (previousFile.exists()) previousFile.delete()
+        }
+
+        fun getUnixTime(): Long {
+            return System.currentTimeMillis()
+        }
+
+        fun lastDay(year : Int, month : Int) : Int{
+            val cal = Calendar.getInstance()
+
+            cal.set(year,month-1,1)
+
+            return cal.getActualMaximum(Calendar.DAY_OF_MONTH)
+        }
+
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        @SuppressLint("SimpleDateFormat")
+        fun getDateDay(date: String, dateType: String): Int {
+            val dateFormat = SimpleDateFormat(dateType)
+            val nDate = dateFormat.parse(date)
+
+            val cal = Calendar.getInstance()
+            cal.time = nDate
+
+            return cal.get(Calendar.DAY_OF_WEEK)
+        }
+
+        fun getDate(year : Int, month : Int, day : Int) : Int{
+            return String.format("%d%s%s",year,if(month < 10) "0$month" else month,if(day < 10) "0$day" else day).toInt()
         }
     }
 }

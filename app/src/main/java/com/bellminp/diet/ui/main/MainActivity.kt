@@ -13,7 +13,9 @@ import com.bellminp.diet.ui.main.fragment.ProfileFragment
 import com.bellminp.diet.ui.main.fragment.SlideFragment
 import com.bellminp.diet.ui.top.TopViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
 
+@DelicateCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>(R.layout.activity_main) {
     override val viewModel by viewModels<MainViewModel>()
