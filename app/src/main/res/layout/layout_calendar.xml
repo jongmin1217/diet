@@ -15,6 +15,7 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
             android:background="@drawable/shape_white_8"
             tools:ignore="SpUsage"
             >
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_calendar"

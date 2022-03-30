@@ -15,6 +15,9 @@ import timber.log.Timber
 
 class CalendarViewModel : BaseViewModel()  {
 
+    private val _initScroll = SingleLiveEvent<Unit>()
+    val initScroll : LiveData<Unit> get() = _initScroll
+
     private val _initCalendar = SingleLiveEvent<ArrayList<ViewPagerCalendar>>()
     val initCalendar : LiveData<ArrayList<ViewPagerCalendar>> get() = _initCalendar
 
@@ -24,6 +27,9 @@ class CalendarViewModel : BaseViewModel()  {
     private val _afterAddCalendar = SingleLiveEvent<ViewPagerCalendar>()
     val afterAddCalendar : LiveData<ViewPagerCalendar> get() = _afterAddCalendar
 
+    fun initScroll(){
+        _initScroll.value = Unit
+    }
 
     @DelicateCoroutinesApi
     fun initCalendar(year : Int, month : Int, type : Int){
@@ -54,7 +60,6 @@ class CalendarViewModel : BaseViewModel()  {
                     Utils.getDateDay(String.format("%d%s%s", year, Utils.dateText(month), "01"), "yyyyMMdd")
                 ).apply {
                     GlobalScope.launch(Dispatchers.Main) {
-                        Timber.d("timber launch $year $month ${this@apply}")
                         if(type == 1) _beforeAddCalendar.value = ViewPagerCalendar(year,month,this@apply,CalendarAdapter(this@CalendarViewModel))
                         else _afterAddCalendar.value = ViewPagerCalendar(year,month,this@apply,CalendarAdapter(this@CalendarViewModel))
                     }
