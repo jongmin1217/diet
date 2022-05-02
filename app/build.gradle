@@ -100,9 +100,10 @@ dependencies {
 
     // image crop
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
-    implementation 'com.github.esafirm.android-image-picker:imagepicker:2.4.1'
-    implementation 'com.github.esafirm.android-image-picker:rximagepicker:2.4.1'
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:2.4.5'
+    implementation 'com.github.esafirm.android-image-picker:rximagepicker:2.4.5'
 
     // permission
     implementation 'com.karumi:dexter:5.0.0'

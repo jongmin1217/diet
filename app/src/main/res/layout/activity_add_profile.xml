@@ -58,10 +58,8 @@
                         app:layout_constraintStart_toStartOf="@id/iv_profile_img"
                         app:layout_constraintEnd_toEndOf="@id/iv_profile_img"
                         android:layout_marginTop="16dp"
-                        android:textColor="@color/color_icn_select"
+                        style="@style/TitleTextview"
                         android:text="@string/add_profile_text_profile_img"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
                         />
 
                     <TextView
@@ -72,10 +70,8 @@
                         app:layout_constraintStart_toStartOf="@id/iv_calendar"
                         app:layout_constraintEnd_toEndOf="@id/iv_calendar"
                         android:layout_marginTop="16dp"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_birth"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -147,10 +143,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_gender"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <CheckBox
@@ -210,10 +204,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_type"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <CheckBox
@@ -301,10 +293,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_nickname"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <EditText
@@ -360,10 +350,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_height"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <EditText
@@ -433,10 +421,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_init_weight"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <EditText
@@ -506,10 +492,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:textColor="@color/color_icn_select"
                         android:text="@string/add_profile_text_goal_weight"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
+                        style="@style/TitleTextview"
                         />
 
                     <EditText

@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bellminp.diet.BuildConfig
 import com.bellminp.diet.ui.data.BottomSheetData
+import com.bellminp.diet.ui.data.CalendarData
 import com.bellminp.diet.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import timber.log.Timber
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -24,6 +26,9 @@ abstract class BaseViewModel : ViewModel() {
 
     private val _finishView = SingleLiveEvent<Unit>()
     val finishView: LiveData<Unit> get() = _finishView
+
+    private val _dialogDismiss = SingleLiveEvent<Unit>()
+    val dialogDismiss: LiveData<Unit> get() = _dialogDismiss
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -52,5 +57,9 @@ abstract class BaseViewModel : ViewModel() {
 
     fun finishView(){
         _finishView.value = Unit
+    }
+
+    fun dialogDismiss(){
+        _dialogDismiss.value = Unit
     }
 }

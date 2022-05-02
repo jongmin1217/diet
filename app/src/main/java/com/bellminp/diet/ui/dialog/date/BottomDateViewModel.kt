@@ -1,4 +1,4 @@
-package com.bellminp.diet.ui.dialog
+package com.bellminp.diet.ui.dialog.date
 
 import androidx.lifecycle.LiveData
 import com.bellminp.diet.ui.base.BaseViewModel

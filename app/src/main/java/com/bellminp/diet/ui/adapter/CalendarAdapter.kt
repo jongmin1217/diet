@@ -41,6 +41,9 @@ class CalendarAdapter (private val viewModel : CalendarViewModel) : RecyclerView
         fun bind(calendarData: CalendarData){
             binding.model = calendarData
 
+            binding.layout.setOnClickListener {
+                viewModel.calendarClick(calendarData)
+            }
         }
     }
 }

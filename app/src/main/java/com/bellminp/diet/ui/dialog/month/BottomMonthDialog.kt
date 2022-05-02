@@ -1,10 +1,9 @@
-package com.bellminp.diet.ui.dialog
+package com.bellminp.diet.ui.dialog.month
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.bellminp.diet.R
-import com.bellminp.diet.databinding.LayoutBottomDateBinding
 import com.bellminp.diet.databinding.LayoutBottomMonthBinding
 import com.bellminp.diet.ui.base.BaseBottomSheetDialog
 import com.bellminp.diet.utils.Utils

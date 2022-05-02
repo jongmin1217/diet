@@ -1,17 +1,11 @@
-package com.bellminp.diet.ui.dialog
+package com.bellminp.diet.ui.dialog.date
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.bellminp.diet.R
-import com.bellminp.diet.common.listener.BottomBasicListener
-import com.bellminp.diet.databinding.LayoutBottomBasicBinding
 import com.bellminp.diet.databinding.LayoutBottomDateBinding
-import com.bellminp.diet.ui.adapter.BottomSheetAdapter
 import com.bellminp.diet.ui.base.BaseBottomSheetDialog
-import com.bellminp.diet.ui.data.BottomSheetData
 import com.bellminp.diet.utils.Utils
 import com.shawnlin.numberpicker.NumberPicker
 

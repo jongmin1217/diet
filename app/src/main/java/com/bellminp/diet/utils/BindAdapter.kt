@@ -3,11 +3,7 @@ package com.bellminp.diet.utils
 import android.widget.Button
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.*
 import com.bellminp.diet.R
-import com.bellminp.diet.ui.adapter.CalendarAdapter
-import com.bellminp.diet.ui.adapter.CalendarListAdapter
-import com.bellminp.diet.ui.data.CalendarData
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 

@@ -8,5 +8,7 @@ class Constants {
         const val TYPE = "TYPE"
         const val ADD = "ADD"
         const val EDIT = "EDIT"
+
+        const val DATA = "DATA"
     }
 }

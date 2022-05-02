@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatDialog
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.bellminp.diet.R
+import com.bellminp.diet.ui.write_type.WriteTypeActivity
+import com.bellminp.diet.utils.Constants
 import timber.log.Timber
 
 abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes val layoutId: Int) : AppCompatActivity() {
@@ -50,9 +52,6 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
 
         ivLoading = progressDialog.findViewById(R.id.ivLoading) as ImageView
         frameAnimation = ivLoading.background as AnimationDrawable
-        ivLoading.post {
-            frameAnimation.start()
-        }
     }
 
     open fun initViewModelObserve(){
@@ -73,6 +72,8 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
             finishView.observe(this@BaseActivity, {
                 finish()
             })
+
+
         }
     }
 
@@ -87,15 +88,13 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
 
     private fun hideProgressDialog() {
         ivLoading.run {
-            postDelayed({
-                if (progressDialog.isShowing){
-                    progressDialog.dismiss()
-                    progressDialog.cancel()
-                }
-                ivLoading.post {
-                    frameAnimation.stop()
-                }
-            }, 500)
+            if (progressDialog.isShowing){
+                progressDialog.dismiss()
+                progressDialog.cancel()
+            }
+            ivLoading.post {
+                frameAnimation.stop()
+            }
         }
     }
 

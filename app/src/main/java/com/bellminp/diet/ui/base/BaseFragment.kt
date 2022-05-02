@@ -1,5 +1,6 @@
 package com.bellminp.diet.ui.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.bellminp.diet.ui.write_type.WriteTypeActivity
+import com.bellminp.diet.utils.Constants
+import timber.log.Timber
 
 abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes val layoutId: Int) : Fragment() {
     abstract val viewModel : VM

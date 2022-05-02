@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.bellminp.diet.ui.dialog.BottomDateViewModel"/>
+            type="com.bellminp.diet.ui.dialog.date.BottomDateViewModel"/>
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

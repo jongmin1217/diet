@@ -13,15 +13,22 @@ data class DietData(
     val month : Int,
     val day : Int,
     @ColumnInfo(name = "food")
-    val food : ArrayList<FoodData>?,
-    val body : String?,
-    val weight : Float?,
+    val food : ArrayList<FoodData>? = null,
+    val body : String? = null,
+    val weight : Float? = null,
     @ColumnInfo(name = "good_list")
-    val goodList : ArrayList<DailyData>?,
+    val goodList : ArrayList<DailyData>? = null,
     @ColumnInfo(name = "bad_list")
-    val badList : ArrayList<DailyData>?,
-    val content : String?
-)
+    val badList : ArrayList<DailyData>? = null,
+    val content : String? = null
+) : Serializable{
+    fun weightText() : String?{
+        weight?.let {
+            return String.format("%.1fKg",it)
+        }
+        return null
+    }
+}
 
 data class FoodData(
     val id : Long,

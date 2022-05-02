@@ -17,6 +17,9 @@
         <entry key="app/src/main/res/drawable/selector_male.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/selector_picture.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/drawable/selector_profile.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_back_12.xml" value="0.38796296296296295" />
+        <entry key="app/src/main/res/drawable/shape_back_12_top.xml" value="0.38796296296296295" />
+        <entry key="app/src/main/res/drawable/shape_back_8.xml" value="0.38796296296296295" />
         <entry key="app/src/main/res/drawable/shape_check_diet.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_check_female.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_check_gym.xml" value="0.41333333333333333" />
@@ -32,21 +35,26 @@
         <entry key="app/src/main/res/drawable/shape_uncheck_female.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_uncheck_gym.xml" value="0.41333333333333333" />
         <entry key="app/src/main/res/drawable/shape_uncheck_male.xml" value="0.4009259259259259" />
+        <entry key="app/src/main/res/drawable/shape_white_12_top.xml" value="0.38796296296296295" />
         <entry key="app/src/main/res/drawable/shape_white_8.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.4064814814814815" />
         <entry key="app/src/main/res/layout/activity_add_profile.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.39492753623188404" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.39492753623188404" />
+        <entry key="app/src/main/res/layout/activity_write_type.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_graph.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/fragment_slide.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/item_bottom_basic.xml" value="0.38722826086956524" />
-        <entry key="app/src/main/res/layout/item_calendar.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/item_calendar.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/layout_bottom_add_content.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_bottom_basic.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_bottom_content_detail.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_bottom_date.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/layout_bottom_month.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/layout_bottom_weight.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_calendar.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/layout_top.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/menu/bottom_navigation_color.xml" value="0.4036458333333333" />

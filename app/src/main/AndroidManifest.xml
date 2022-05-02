@@ -42,6 +42,13 @@
             tools:ignore="LockedOrientationActivity"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Diet" />
+
+        <activity
+            android:name=".ui.write_type.WriteTypeActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
     </application>
 
 </manifest>

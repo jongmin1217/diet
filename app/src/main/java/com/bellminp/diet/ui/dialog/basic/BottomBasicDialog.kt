@@ -1,4 +1,4 @@
-package com.bellminp.diet.ui.dialog
+package com.bellminp.diet.ui.dialog.basic
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,6 @@ import com.bellminp.diet.common.listener.BottomBasicListener
 import com.bellminp.diet.databinding.LayoutBottomBasicBinding
 import com.bellminp.diet.ui.adapter.BottomSheetAdapter
 import com.bellminp.diet.ui.base.BaseBottomSheetDialog
-import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.data.BottomSheetData
 
 class BottomBasicDialog(

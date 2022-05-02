@@ -32,11 +32,21 @@ abstract class BaseBottomSheetDialog<B : ViewDataBinding,VM : BaseViewModel>(@La
 
         binding.lifecycleOwner = viewLifecycleOwner
         initBinding()
+        initViewModelObserve()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return BottomSheetDialog(requireContext(), R.style.NewDialog).apply {
             setCanceledOnTouchOutside(true)
+            if(layoutId == R.layout.layout_bottom_add_content) behavior.isDraggable = false
+        }
+    }
+
+    open fun initViewModelObserve(){
+        with(viewModel){
+            dialogDismiss.observe(viewLifecycleOwner,{
+                dismiss()
+            })
         }
     }
 

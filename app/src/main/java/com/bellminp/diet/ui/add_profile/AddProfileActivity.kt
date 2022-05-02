@@ -10,16 +10,14 @@ import com.bellminp.diet.databinding.ActivityAddProfileBinding
 import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.data.BottomSheetData
-import com.bellminp.diet.ui.dialog.BottomBasicDialog
-import com.bellminp.diet.ui.dialog.BottomBasicViewModel
-import com.bellminp.diet.ui.dialog.BottomDateDialog
-import com.bellminp.diet.ui.dialog.BottomDateViewModel
+import com.bellminp.diet.ui.dialog.basic.BottomBasicDialog
+import com.bellminp.diet.ui.dialog.basic.BottomBasicViewModel
+import com.bellminp.diet.ui.dialog.date.BottomDateDialog
+import com.bellminp.diet.ui.dialog.date.BottomDateViewModel
 import com.bellminp.diet.ui.top.TopViewModel
 import com.bellminp.diet.utils.Constants
 import com.esafirm.imagepicker.features.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.Console
-import java.io.File
 
 @AndroidEntryPoint
 class AddProfileActivity :
