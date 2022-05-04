@@ -8,6 +8,7 @@ import com.bellminp.diet.databinding.ActivityIntroBinding
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 @AndroidEntryPoint
 class IntroActivity : BaseActivity<ActivityIntroBinding,IntroViewModel>(R.layout.activity_intro) {

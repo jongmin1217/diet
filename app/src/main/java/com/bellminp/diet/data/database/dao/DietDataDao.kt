@@ -22,20 +22,20 @@ interface DietDataDao {
     fun addDietData(data : DietData) : Single<Long>
 
     @Query("UPDATE diet_data SET food = :food WHERE id = :id")
-    fun editFood(id : Long, food : ArrayList<FoodData>): Completable
+    fun editFood(id : Long, food : ArrayList<FoodData>?): Completable
 
     @Query("UPDATE diet_data SET body = :body WHERE id = :id")
-    fun editBody(id : Long, body : String): Completable
+    fun editBody(id : Long, body : String?): Completable
 
     @Query("UPDATE diet_data SET good_list = :good WHERE id = :id")
-    fun editGood(id : Long, good : ArrayList<DailyData>): Completable
+    fun editGood(id : Long, good : ArrayList<DailyData>?): Completable
 
     @Query("UPDATE diet_data SET bad_list = :bad WHERE id = :id")
-    fun editBad(id : Long, bad : ArrayList<DailyData>): Completable
+    fun editBad(id : Long, bad : ArrayList<DailyData>?): Completable
 
     @Query("UPDATE diet_data SET weight = :weight WHERE id = :id")
-    fun editWeight(id : Long, weight : Float): Completable
+    fun editWeight(id : Long, weight : Float?): Completable
 
     @Query("UPDATE diet_data SET content = :content WHERE id = :id")
-    fun editContent(id : Long, content : String): Completable
+    fun editContent(id : Long, content : String?): Completable
 }

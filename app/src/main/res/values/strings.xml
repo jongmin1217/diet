@@ -50,6 +50,12 @@
 
     <string name="read_more">… 더보기</string>
 
+    <string name="camera_permission">앱 설정에서 카메라 권한을 허용해 주세요.</string>
+
+    <string name="min_issue_text">최소 3글자</string>
+
+    <string name="try_delete">삭제 하시겠습니까?</string>
+
     <string name="year">년</string>
     <string name="month">월</string>
 
@@ -59,6 +65,11 @@
     <string name="add_profile_text_height_hint">키를 거짓말 없이 입력하세요 (확인할거에요)</string>
     <string name="add_profile_text_init_weight_hint">다이어트 시작 몸무게를 입력해 주세요.</string>
     <string name="add_profile_text_goal_weight_hint">다이어트 목표 몸무게를 입력해 주세요.</string>
+
+    <string name="add_good_list">좋았던 일을 등록해 주세요.</string>
+    <string name="add_bad_list">나빴던 일을 등록해 주세요.</string>
+    <string name="edit_good_list">좋았던 일을 수정해 주세요.</string>
+    <string name="edit_bad_list">나빴던 일을 수정해 주세요.</string>
 
     <string name="do_not_lie">거짓말 없이 입력하세요</string>
 

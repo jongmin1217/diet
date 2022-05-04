@@ -1,5 +1,6 @@
 package com.bellminp.diet.domain.usecase
 
+import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.repository.DietDataRepository
 import com.bellminp.diet.domain.usecase.base.UseCase
@@ -12,7 +13,7 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
     fun addDietData(
         data : DietData,
         onSuccess: ((t: Long) -> Unit) = {},
-        onError: ((t: Throwable) -> Unit),
+        onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
         addDisposable(
@@ -26,9 +27,9 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
 
     fun editWeight(
         id : Long,
-        weight : Float,
+        weight : Float?,
         onSuccess: (() -> Unit) = {},
-        onError: ((t: Throwable) -> Unit),
+        onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
         addDisposable(
@@ -42,13 +43,61 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
 
     fun editContent(
         id : Long,
-        content : String,
+        content : String?,
         onSuccess: (() -> Unit) = {},
-        onError: ((t: Throwable) -> Unit),
+        onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
         addDisposable(
             repository.editContent(id,content)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(onFinished)
+                .subscribe(onSuccess, onError)
+        )
+    }
+
+    fun editGoodList(
+        id : Long,
+        goodList : ArrayList<DailyData>?,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
+        onFinished: () -> Unit = {}
+    ){
+        addDisposable(
+            repository.editGood(id,goodList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(onFinished)
+                .subscribe(onSuccess, onError)
+        )
+    }
+
+    fun editBadList(
+        id : Long,
+        badList : ArrayList<DailyData>?,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
+        onFinished: () -> Unit = {}
+    ){
+        addDisposable(
+            repository.editBad(id,badList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(onFinished)
+                .subscribe(onSuccess, onError)
+        )
+    }
+
+    fun editBody(
+        id : Long,
+        body : String?,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
+        onFinished: () -> Unit = {}
+    ){
+        addDisposable(
+            repository.editBody(id,body)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(onFinished)

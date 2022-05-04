@@ -30,6 +30,7 @@ abstract class BaseViewModel : ViewModel() {
     private val _dialogDismiss = SingleLiveEvent<Unit>()
     val dialogDismiss: LiveData<Unit> get() = _dialogDismiss
 
+
     private val compositeDisposable = CompositeDisposable()
 
     val profileUrl = "data/data/" + BuildConfig.APPLICATION_ID + "/app_profile_image/profile.jpg"
@@ -62,4 +63,5 @@ abstract class BaseViewModel : ViewModel() {
     fun dialogDismiss(){
         _dialogDismiss.value = Unit
     }
+
 }

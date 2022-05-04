@@ -26,27 +26,27 @@ class DietDataLocalDataSource @Inject constructor(
         return local.addDietData(data)
     }
 
-    fun editFood(id : Long, food : ArrayList<FoodData>): Completable{
+    fun editFood(id : Long, food : ArrayList<FoodData>?): Completable{
         return local.editFood(id,food)
     }
 
-    fun editBody(id : Long, body : String): Completable{
+    fun editBody(id : Long, body : String?): Completable{
         return local.editBody(id,body)
     }
 
-    fun editGood(id : Long, good : ArrayList<DailyData>): Completable{
+    fun editGood(id : Long, good : ArrayList<DailyData>?): Completable{
         return local.editGood(id,good)
     }
 
-    fun editBad(id : Long, bad : ArrayList<DailyData>): Completable{
+    fun editBad(id : Long, bad : ArrayList<DailyData>?): Completable{
         return local.editBad(id,bad)
     }
 
-    fun editWeight(id : Long, weight : Float): Completable{
+    fun editWeight(id : Long, weight : Float?): Completable{
         return local.editWeight(id,weight)
     }
 
-    fun editContent(id : Long, content : String): Completable{
+    fun editContent(id : Long, content : String?): Completable{
         return local.editContent(id,content)
     }
 }

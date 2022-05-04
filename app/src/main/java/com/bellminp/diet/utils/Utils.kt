@@ -11,6 +11,7 @@ import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import androidx.core.content.FileProvider
 import com.bellminp.diet.BuildConfig
 import com.bellminp.diet.di.DietApplication
 import timber.log.Timber
@@ -19,6 +20,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class Utils {
     companion object{
@@ -79,6 +81,55 @@ class Utils {
             val previousFile =
                 File("data/data/" + BuildConfig.APPLICATION_ID + "/app_profile_image/profile.jpg")
             if (previousFile.exists()) previousFile.delete()
+        }
+
+        fun createBodyPicture() : ArrayList<Any>?{
+            return try {
+                val returnString = ArrayList<Any>()
+                val imgFileName = getUnixTime().toString()
+                val directory = DietApplication.mInstance.cacheDir
+
+                val tempImage = File.createTempFile(imgFileName,".jpg",directory)
+                returnString.add(tempImage.absolutePath)
+                returnString.add(tempImage)
+
+                returnString
+
+            }catch (e: IOException){
+                e.printStackTrace()
+                null
+            }
+        }
+
+        fun saveBody(uri : Uri) : String?{
+            return try {
+                val bitmap = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(DietApplication.mInstance.contentResolver,uri))
+                }else{
+                    MediaStore.Images.Media.getBitmap(DietApplication.mInstance.contentResolver,uri)
+                }
+
+                val imgFileName = "${getUnixTime()}.jpg"
+                val cw = ContextWrapper(DietApplication.mInstance.applicationContext)
+                val directory = cw.getDir("body_image", Context.MODE_PRIVATE)
+                val file = File(directory, imgFileName)
+
+                val fos = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                fos.flush()
+                fos.close()
+
+                uri.path?.let {
+                    val deleteFile = File(it)
+                    if(deleteFile.exists()) deleteFile.delete()
+                }
+
+                "data/data/" + BuildConfig.APPLICATION_ID + "/app_body_image/$imgFileName"
+
+            }catch (e: IOException){
+                e.printStackTrace()
+                null
+            }
         }
 
         fun getUnixTime(): Long {

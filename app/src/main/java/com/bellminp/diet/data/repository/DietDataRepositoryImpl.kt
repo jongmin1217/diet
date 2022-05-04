@@ -25,27 +25,27 @@ class DietDataRepositoryImpl @Inject constructor(
         return dataSource.addDietData(data)
     }
 
-    override fun editFood(id : Long, food : ArrayList<FoodData>): Completable{
+    override fun editFood(id : Long, food : ArrayList<FoodData>?): Completable{
         return dataSource.editFood(id,food)
     }
 
-    override fun editBody(id : Long, body : String): Completable{
+    override fun editBody(id : Long, body : String?): Completable{
         return dataSource.editBody(id,body)
     }
 
-    override fun editGood(id : Long, good : ArrayList<DailyData>): Completable{
+    override fun editGood(id : Long, good : ArrayList<DailyData>?): Completable{
         return dataSource.editGood(id,good)
     }
 
-    override fun editBad(id : Long, bad : ArrayList<DailyData>): Completable{
+    override fun editBad(id : Long, bad : ArrayList<DailyData>?): Completable{
         return dataSource.editBad(id,bad)
     }
 
-    override fun editWeight(id : Long, weight : Float): Completable{
+    override fun editWeight(id : Long, weight : Float?): Completable{
         return dataSource.editWeight(id,weight)
     }
 
-    override fun editContent(id : Long, content : String): Completable{
+    override fun editContent(id : Long, content : String?): Completable{
         return dataSource.editContent(id,content)
     }
 

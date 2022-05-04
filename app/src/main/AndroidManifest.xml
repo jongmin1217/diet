@@ -4,6 +4,10 @@
     package="com.bellminp.diet">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".di.DietApplication"
@@ -48,7 +52,20 @@
             android:screenOrientation="portrait"
             android:exported="false"
             tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Diet" />
+
+
+        <provider
+            android:authorities="com.bellminp.diet.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>

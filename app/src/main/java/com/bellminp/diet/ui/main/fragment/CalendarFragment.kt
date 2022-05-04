@@ -15,6 +15,7 @@ import com.bellminp.diet.ui.write_type.WriteTypeActivity
 import com.bellminp.diet.utils.Constants
 import com.bellminp.diet.utils.Utils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 @AndroidEntryPoint
 class CalendarFragment :
