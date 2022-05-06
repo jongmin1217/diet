@@ -4,6 +4,7 @@ import android.graphics.Color
 import com.bellminp.diet.R
 import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.domain.model.DailyData
+import com.bellminp.diet.domain.model.FoodData
 
 data class DialogData(
     val title : String = DietApplication.mInstance.resources.getString(R.string.try_delete),
@@ -18,5 +19,7 @@ data class DeleteDietData(
     val id : Long,
     val type : Int,
     val list : ArrayList<DailyData>? = null,
-    val position : Int? = null
+    val position : Int? = null,
+    val foodList : ArrayList<FoodData>? = null,
+    val bodyUrl : String? = null
 )

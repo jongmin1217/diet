@@ -55,6 +55,13 @@
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Diet" />
 
+        <activity
+            android:name=".ui.food_image.FoodImageActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
+
 
         <provider
             android:authorities="com.bellminp.diet.fileprovider"

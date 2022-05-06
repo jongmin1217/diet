@@ -11,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 import com.bellminp.diet.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import timber.log.Timber
 
 abstract class BaseBottomSheetDialog<B : ViewDataBinding,VM : BaseViewModel>(@LayoutRes val layoutId: Int) : BottomSheetDialogFragment() {
 
@@ -48,6 +49,12 @@ abstract class BaseBottomSheetDialog<B : ViewDataBinding,VM : BaseViewModel>(@La
                 dismiss()
             })
         }
+    }
+
+    override fun onDestroy() {
+        Timber.d("timber onDestroy")
+        viewModel.destroyedBottomDialog()
+        super.onDestroy()
     }
 
 }

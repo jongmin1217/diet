@@ -62,12 +62,12 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:textColorPrimary">@color/color_gray_2</item>
-        <item name="android:statusBarColor">#ffffff</item>
+        <item name="android:textColorPrimary">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/dialog_background</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
-
+        <item name="android:windowTranslucentStatus">false</item>
     </style>
 </resources>

@@ -15,7 +15,8 @@ class YnDialog(
     mContext : Context,
     lifecycle : LifecycleOwner,
     private val viewModel: YnViewModel,
-    private val data : DialogData
+    private val data : DialogData,
+    private val delete : ((position : Int)->Unit) = {}
 ) : BaseDialog<DialogYnBinding>(R.layout.dialog_yn,mContext, lifecycle){
 
     override fun initBinding() {
@@ -42,8 +43,14 @@ class YnDialog(
 
         binding.btnOk.setOnClickListener {
             viewModel.okClick(data)
+            delete(data.deleteData?.position?:-1)
             dismiss()
             cancel()
         }
+    }
+
+    override fun dismiss() {
+        viewModel.destroyedDialog()
+        super.dismiss()
     }
 }

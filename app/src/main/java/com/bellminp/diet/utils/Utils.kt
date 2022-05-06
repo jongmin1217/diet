@@ -132,6 +132,37 @@ class Utils {
             }
         }
 
+        fun saveFood(uri : Uri) : String?{
+            return try {
+                val bitmap = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(DietApplication.mInstance.contentResolver,uri))
+                }else{
+                    MediaStore.Images.Media.getBitmap(DietApplication.mInstance.contentResolver,uri)
+                }
+
+                val imgFileName = "${getUnixTime()}.jpg"
+                val cw = ContextWrapper(DietApplication.mInstance.applicationContext)
+                val directory = cw.getDir("food_image", Context.MODE_PRIVATE)
+                val file = File(directory, imgFileName)
+
+                val fos = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                fos.flush()
+                fos.close()
+
+                uri.path?.let {
+                    val deleteFile = File(it)
+                    if(deleteFile.exists()) deleteFile.delete()
+                }
+
+                "data/data/" + BuildConfig.APPLICATION_ID + "/app_food_image/$imgFileName"
+
+            }catch (e: IOException){
+                e.printStackTrace()
+                null
+            }
+        }
+
         fun getUnixTime(): Long {
             return System.currentTimeMillis()
         }

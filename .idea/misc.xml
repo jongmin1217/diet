@@ -39,9 +39,11 @@
         <entry key="app/src/main/res/drawable/shape_uncheck_male.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_white_12_top.xml" value="0.38796296296296295" />
         <entry key="app/src/main/res/drawable/shape_white_20.xml" value="0.4046296296296296" />
+        <entry key="app/src/main/res/drawable/shape_white_4.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/shape_white_8.xml" value="0.4009259259259259" />
         <entry key="app/src/main/res/drawable/splash.xml" value="0.4064814814814815" />
         <entry key="app/src/main/res/layout/activity_add_profile.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/activity_food_image.xml" value="0.38813405797101447" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.39492753623188404" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.39492753623188404" />
         <entry key="app/src/main/res/layout/activity_write_type.xml" value="0.3704710144927536" />
@@ -54,15 +56,20 @@
         <entry key="app/src/main/res/layout/fragment_slide.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/item_bottom_basic.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/item_calendar.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_food_image.xml" value="0.38813405797101447" />
         <entry key="app/src/main/res/layout/item_issue_list.xml" value="0.39221014492753625" />
         <entry key="app/src/main/res/layout/layout_bottom_add_content.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_bottom_add_issue.xml" value="0.39221014492753625" />
         <entry key="app/src/main/res/layout/layout_bottom_basic.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/layout/layout_bottom_content_detail.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_bottom_date.xml" value="0.38722826086956524" />
+        <entry key="app/src/main/res/layout/layout_bottom_food_name.xml" value="0.38813405797101447" />
         <entry key="app/src/main/res/layout/layout_bottom_month.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/layout_bottom_photo.xml" value="0.38813405797101447" />
         <entry key="app/src/main/res/layout/layout_bottom_weight.xml" value="0.3704710144927536" />
         <entry key="app/src/main/res/layout/layout_calendar.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/layout_food_image.xml" value="0.38813405797101447" />
+        <entry key="app/src/main/res/layout/layout_image_slide.xml" value="0.38813405797101447" />
         <entry key="app/src/main/res/layout/layout_top.xml" value="0.38722826086956524" />
         <entry key="app/src/main/res/menu/bottom_navigation_color.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.4036458333333333" />

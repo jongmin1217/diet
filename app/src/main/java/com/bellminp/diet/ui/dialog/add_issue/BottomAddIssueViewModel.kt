@@ -87,4 +87,8 @@ class BottomAddIssueViewModel @Inject constructor(
             )
         }
     }
+
+    override fun destroyedBottomDialog() {
+        addDietDataUseCase.clearDisposable()
+    }
 }

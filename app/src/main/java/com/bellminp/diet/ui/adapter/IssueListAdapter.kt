@@ -11,7 +11,7 @@ import com.bellminp.diet.ui.data.CalendarData
 import com.bellminp.diet.ui.main.fragment.CalendarViewModel
 import com.bellminp.diet.ui.write_type.WriteTypeViewModel
 
-class IssueListAdapter (private val viewModel : WriteTypeViewModel, private val type : Int) : RecyclerView.Adapter<IssueListAdapter.CalendarHolder>(){
+class IssueListAdapter (private val viewModel : WriteTypeViewModel, private val type : Int) : RecyclerView.Adapter<IssueListAdapter.IssueHolder>(){
 
     var items = ArrayList<DailyData>()
         @SuppressLint("NotifyDataSetChanged")
@@ -20,9 +20,9 @@ class IssueListAdapter (private val viewModel : WriteTypeViewModel, private val 
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueHolder {
         val binding = ItemIssueListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CalendarHolder(binding)
+        return IssueHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -34,11 +34,11 @@ class IssueListAdapter (private val viewModel : WriteTypeViewModel, private val 
         return items[position].id
     }
 
-    override fun onBindViewHolder(holder: CalendarHolder, position: Int) {
+    override fun onBindViewHolder(holder: IssueHolder, position: Int) {
         holder.bind(items[position])
     }
 
-    inner class CalendarHolder(val binding: ItemIssueListBinding):
+    inner class IssueHolder(val binding: ItemIssueListBinding):
         RecyclerView.ViewHolder(binding.root){
 
         fun bind(dailyData: DailyData){

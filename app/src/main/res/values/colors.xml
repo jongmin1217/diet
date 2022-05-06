@@ -26,7 +26,7 @@
     <color name="color_gray_5">#F3F3F3</color>
     <color name="color_gray_6">#262626</color>
 
-    <color name="dialog_background">#70000000</color>
+    <color name="dialog_background">#B3000000</color>
 
     <color name="red">#e02020</color>
 </resources>

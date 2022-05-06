@@ -77,11 +77,26 @@
                             android:text="@string/food"
                             />
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview_food_list"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"
+                            app:layout_constraintTop_toBottomOf="@id/iv_food"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="11dp"
+                            android:layout_marginTop="8dp"
+                            android:visibility="@{vm.dietData.food == null ? View.GONE : View.VISIBLE}"
+                            setFoodList="@{vm.dietData.food}"
+                            />
+
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btn_food_add"
                             android:layout_width="0dp"
                             android:layout_height="30dp"
-                            app:layout_constraintTop_toBottomOf="@id/iv_food"
+                            app:layout_constraintTop_toBottomOf="@id/recyclerview_food_list"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginStart="16dp"
@@ -94,28 +109,10 @@
                             android:textStyle="bold"
                             />
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btn_food_detail"
-                            android:layout_width="0dp"
-                            android:layout_height="30dp"
-                            app:layout_constraintTop_toBottomOf="@id/btn_food_add"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginTop="4dp"
-                            android:background="@drawable/shape_enable_button"
-                            android:textSize="14dp"
-                            android:textColor="@color/white"
-                            android:text="@string/view_detail"
-                            android:textStyle="bold"
-                            android:visibility="@{vm.dietData.food == null ? View.GONE : View.VISIBLE}"
-                            />
-
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            app:layout_constraintTop_toBottomOf="@id/btn_food_detail"
+                            app:layout_constraintTop_toBottomOf="@id/btn_food_add"
                             android:layout_marginTop="16dp"
                             android:background="@android:color/transparent"
                             />

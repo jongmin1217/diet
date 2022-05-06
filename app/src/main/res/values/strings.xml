@@ -54,6 +54,8 @@
 
     <string name="min_issue_text">최소 3글자</string>
 
+    <string name="food_name_hint">ex) 점심,저녁,야식 (최대 10자)</string>
+
     <string name="try_delete">삭제 하시겠습니까?</string>
 
     <string name="year">년</string>
@@ -101,4 +103,10 @@
     <string name="bad">나쁜 일들</string>
     <string name="weight">몸무게</string>
     <string name="content">일기장</string>
+
+    <string name="photo_title">사진을 선택해주세요</string>
+    <string name="gallery">갤러리</string>
+    <string name="camera">카메라</string>
+
+    <string name="plz_photo_name">사진의 이름을 입력해 주세요.</string>
 </resources>

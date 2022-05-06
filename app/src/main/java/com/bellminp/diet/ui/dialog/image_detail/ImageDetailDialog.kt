@@ -27,5 +27,12 @@ class ImageDetailDialog(
         super.onCreate(savedInstanceState)
 
         BindAdapter.setImageDetail(binding.ivImage,path)
+
+        binding.layout.setOnClickListener {
+            dismiss()
+            cancel()
+        }
+
+        binding.ivImage.setOnClickListener{}
     }
 }

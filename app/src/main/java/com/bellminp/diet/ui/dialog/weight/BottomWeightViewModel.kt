@@ -42,4 +42,8 @@ class BottomWeightViewModel @Inject constructor(
             }
         }
     }
+
+    override fun destroyedBottomDialog() {
+        addDietDataUseCase.clearDisposable()
+    }
 }

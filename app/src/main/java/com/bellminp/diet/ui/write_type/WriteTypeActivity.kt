@@ -21,6 +21,7 @@ import com.bellminp.diet.BuildConfig
 import com.bellminp.diet.R
 import com.bellminp.diet.databinding.ActivityWriteTypeBinding
 import com.bellminp.diet.di.DietApplication
+import com.bellminp.diet.ui.adapter.FoodImageAdapter
 import com.bellminp.diet.ui.adapter.IssueListAdapter
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.data.DateData
@@ -29,10 +30,13 @@ import com.bellminp.diet.ui.data.DialogData
 import com.bellminp.diet.ui.dialog.add_content.BottomAddContentDialog
 import com.bellminp.diet.ui.dialog.add_issue.BottomAddIssueDialog
 import com.bellminp.diet.ui.dialog.content_detail.BottomContentDetailDialog
+import com.bellminp.diet.ui.dialog.food_name.BottomFoodNameDialog
 import com.bellminp.diet.ui.dialog.image_detail.ImageDetailDialog
+import com.bellminp.diet.ui.dialog.photo.BottomPhotoDialog
 import com.bellminp.diet.ui.dialog.weight.BottomWeightDialog
 import com.bellminp.diet.ui.dialog.yn.YnDialog
 import com.bellminp.diet.ui.dialog.yn.YnViewModel
+import com.bellminp.diet.ui.food_image.FoodImageActivity
 import com.bellminp.diet.ui.top.TopViewModel
 import com.bellminp.diet.utils.BindAdapter
 import com.bellminp.diet.utils.Constants
@@ -57,12 +61,20 @@ class WriteTypeActivity :
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                Timber.d("timber ${ImagePicker.getImages(result.data)[0].uri}")
-                //viewModel.profileImg.value = ImagePicker.getImages(result.data)[0].uri.toString()
+                if(ImagePicker.getImages(result.data).isNotEmpty()){
+                    writeFoodName(ImagePicker.getImages(result.data)[0].uri)
+                }
             }
         }
 
-    private val cameraLauncher =
+    private val cameraFoodLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                writeFoodName(Uri.fromFile(File(currentPhotoPath)))
+            }
+        }
+
+    private val cameraBodyLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 viewModel.saveBodyImage(currentPhotoPath)
@@ -125,6 +137,12 @@ class WriteTypeActivity :
                     DialogData(deleteData = data)
                 ).show()
             })
+
+            goFoodDetail.observe(binding.lifecycleOwner!!,{data ->
+                val intent = Intent(this@WriteTypeActivity,FoodImageActivity::class.java)
+                intent.putExtra(Constants.DATA,data)
+                startActivity(intent)
+            })
         }
     }
 
@@ -137,9 +155,13 @@ class WriteTypeActivity :
             binding.recyclerviewBadList,
             IssueListAdapter(viewModel, Constants.BAD_LIST)
         )
+        BindAdapter.foodListAdapter(
+            binding.recyclerviewFoodList,
+            FoodImageAdapter(viewModel)
+        )
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
+
     private fun initListener() {
         binding.btnWeightAdd.setOnClickListener {
             with(viewModel) {
@@ -222,37 +244,7 @@ class WriteTypeActivity :
         }
 
         binding.btnBodyAdd.setOnClickListener {
-            val cameraPermissionCheck = ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.CAMERA
-            )
-            if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(android.Manifest.permission.CAMERA),
-                    1000
-                )
-            } else {
-                Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-                    takePictureIntent.resolveActivity(packageManager)?.also {
-                        val path = Utils.createBodyPicture()
-                        path?.let {
-                            if (it.size == 2 && it[1] is File) {
-                                currentPhotoPath = it[0] as String
-                                val photoUri = FileProvider.getUriForFile(
-                                    this@WriteTypeActivity,
-                                    "${packageName}.fileprovider",
-                                    it[1] as File
-                                )
-                                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                                cameraLauncher.launch(takePictureIntent)
-                            }
-
-                        }
-
-                    }
-                }
-            }
+            takePhoto(0)
         }
 
         binding.ivBodyValue.setOnClickListener {
@@ -267,8 +259,78 @@ class WriteTypeActivity :
                     this,
                     binding.lifecycleOwner!!,
                     ynViewModel,
-                    DialogData(deleteData = DeleteDietData(id, Constants.BODY))
+                    DialogData(deleteData = DeleteDietData(id, Constants.BODY, bodyUrl = viewModel.dietData.value?.body))
                 ).show()
+            }
+        }
+
+        binding.btnFoodAdd.setOnClickListener {
+            BottomPhotoDialog(
+                selectCamera = {
+                    takePhoto(1)
+                },
+                selectGallery = {
+                    galleryLauncher.launch(
+                        ImagePicker.create(this).single().showCamera(false).folderMode(true)
+                            .toolbarFolderTitle(DietApplication.mInstance.resources.getString(R.string.folder))
+                            .toolbarDoneButtonText("선택")
+                            .theme(R.style.CustomImagePickerTheme).getIntent(this)
+                    )
+                }
+            ).show(supportFragmentManager, "photo")
+        }
+    }
+
+    private fun writeFoodName(uri : Uri){
+        with(viewModel) {
+            date?.let { date ->
+                BottomFoodNameDialog(
+                    uri,
+                    dietData.value?.food,
+                    null,
+                    dietData.value?.id,
+                    date,
+                    loading = {
+                        viewModel.showLoading(true)
+                    }
+                ).show(supportFragmentManager, "food_name")
+            }
+        }
+    }
+
+
+    @SuppressLint("QueryPermissionsNeeded")
+    private fun takePhoto(type : Int){
+        val cameraPermissionCheck = ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.CAMERA
+        )
+        if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.CAMERA),
+                1000
+            )
+        } else {
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+                takePictureIntent.resolveActivity(packageManager)?.also {
+                    val path = Utils.createBodyPicture()
+                    path?.let {
+                        if (it.size == 2 && it[1] is File) {
+                            currentPhotoPath = it[0] as String
+                            val photoUri = FileProvider.getUriForFile(
+                                this@WriteTypeActivity,
+                                "${packageName}.fileprovider",
+                                it[1] as File
+                            )
+                            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+                            if(type == 0) cameraBodyLauncher.launch(takePictureIntent)
+                            else cameraFoodLauncher.launch(takePictureIntent)
+                        }
+
+                    }
+
+                }
             }
         }
     }

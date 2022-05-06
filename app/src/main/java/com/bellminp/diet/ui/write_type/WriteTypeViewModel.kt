@@ -12,6 +12,7 @@ import com.bellminp.diet.domain.usecase.GetDietDataUseCase
 import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.data.DateData
 import com.bellminp.diet.ui.data.DeleteDietData
+import com.bellminp.diet.ui.data.FoodImageData
 import com.bellminp.diet.utils.Constants
 import com.bellminp.diet.utils.SingleLiveEvent
 import com.bellminp.diet.utils.Utils
@@ -37,6 +38,9 @@ class WriteTypeViewModel @Inject constructor(
     private val _deleteIssue = SingleLiveEvent<DeleteDietData>()
     val deleteIssue: LiveData<DeleteDietData> get() = _deleteIssue
 
+    private val _goFoodDetail = SingleLiveEvent<FoodImageData>()
+    val goFoodDetail: LiveData<FoodImageData> get() = _goFoodDetail
+
     var date: DateData? = null
     val dietData = MutableLiveData<DietData>().default(null)
 
@@ -44,6 +48,7 @@ class WriteTypeViewModel @Inject constructor(
         this.date = date
         getDietDataUseCase.observableDietData(date.year, date.month, date.day,
             onSuccess = {
+                showLoading(false)
                 dietData.value = it
             }, onError = {
                 Timber.d("timber observableDietData $it")
@@ -91,9 +96,17 @@ class WriteTypeViewModel @Inject constructor(
             _deleteIssue.value = DeleteDietData(
                 it.id,
                 type,
-                if (type == Constants.GOOD_LIST) it.goodList else it.badList,
+                list = if (type == Constants.GOOD_LIST) it.goodList else it.badList,
                 position
             )
+        }
+    }
+
+    override fun foodImageClick(position: Int){
+        dietData.value?.let {
+            it.food?.let { food->
+                _goFoodDetail.value = FoodImageData(it.id,food,position)
+            }
         }
     }
 

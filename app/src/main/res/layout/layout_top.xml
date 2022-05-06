@@ -45,6 +45,32 @@
             android:text="@{vm.titleText}"
             />
 
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/img_delete"
+            android:onClick="@{()->vm.btnDeleteClick()}"
+            android:visibility="@{vm.btnDeleteVisible ? View.VISIBLE : View.GONE}"
+            />
+
+        <ImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintEnd_toStartOf="@id/btn_delete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/icn_edit"
+            android:onClick="@{()->vm.btnEditClick()}"
+            android:visibility="@{vm.btnEditVisible ? View.VISIBLE : View.GONE}"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -64,4 +64,8 @@ abstract class BaseViewModel : ViewModel() {
         _dialogDismiss.value = Unit
     }
 
+    open fun foodImageClick(position: Int){}
+
+    open fun destroyedBottomDialog(){}
+
 }
