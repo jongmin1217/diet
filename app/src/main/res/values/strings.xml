@@ -62,6 +62,7 @@
     <string name="month">월</string>
 
     <string name="add_profile_complete">프로필 등록이 완료 됐습니다.</string>
+    <string name="edit_profile_complete">프로필 수정이 완료 됐습니다.</string>
 
     <string name="add_profile_text_nickname_hint">닉네임을 입력해 주세요 (최대 15자)</string>
     <string name="add_profile_text_height_hint">키를 거짓말 없이 입력하세요 (확인할거에요)</string>
@@ -74,6 +75,12 @@
     <string name="edit_bad_list">나빴던 일을 수정해 주세요.</string>
 
     <string name="do_not_lie">거짓말 없이 입력하세요</string>
+
+    <string name="plz_work_out_type">운동 종목을 입력해주세요 (최대 10자)</string>
+    <string name="while_time">~</string>
+    <string name="time_center">:</string>
+
+    <string name="today_work_out">오늘한 운동을 기록해 보세요</string>
 
     <string name="post_weight">몸무게 등록</string>
     <string name="edit_weight">몸무게 수정</string>
@@ -103,6 +110,9 @@
     <string name="bad">나쁜 일들</string>
     <string name="weight">몸무게</string>
     <string name="content">일기장</string>
+    <string name="work_out">운동</string>
+
+    <string name="goal_complete">목표 달성!!</string>
 
     <string name="photo_title">사진을 선택해주세요</string>
     <string name="gallery">갤러리</string>

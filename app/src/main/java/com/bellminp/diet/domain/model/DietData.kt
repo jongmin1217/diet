@@ -20,7 +20,9 @@ data class DietData(
     val goodList : ArrayList<DailyData>? = null,
     @ColumnInfo(name = "bad_list")
     val badList : ArrayList<DailyData>? = null,
-    val content : String? = null
+    val content : String? = null,
+    @ColumnInfo(name = "work_out_list")
+    val workOutList : ArrayList<WorkOutData>? = null
 ) : Serializable{
     fun weightText() : String?{
         weight?.let {
@@ -40,3 +42,21 @@ data class DailyData(
     val id : Long,
     val content : String
 ) : Serializable
+
+data class WorkOutData(
+    val id : Long,
+    val type : String,
+    val time : String,
+    val startRegDate : Long,
+    val endRegDate : Long
+) : Serializable{
+    fun getTimeText() : String{
+        val differenceTime = endRegDate - startRegDate
+        val min = differenceTime / (1000*60)
+
+        val hourText = if((min/60).toInt() == 0) "" else "${(min/60).toInt()}시간 "
+        val minText = if((min%60).toInt()== 0) "" else "${(min%60).toInt()}분 "
+
+        return String.format("%s (%s%s 운동)",time.replace("|"," ~ "),hourText,minText)
+    }
+}

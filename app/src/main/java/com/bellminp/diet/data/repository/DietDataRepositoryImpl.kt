@@ -4,6 +4,7 @@ import com.bellminp.diet.data.data_source.local.DietDataLocalDataSource
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import com.bellminp.diet.domain.repository.DietDataRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -49,4 +50,11 @@ class DietDataRepositoryImpl @Inject constructor(
         return dataSource.editContent(id,content)
     }
 
+    override fun editWorkOut(id : Long, workOut : ArrayList<WorkOutData>?): Completable{
+        return dataSource.editWorkOut(id,workOut)
+    }
+
+    override fun getLastWeight(): Observable<List<Float>>{
+        return dataSource.getLastWeight()
+    }
 }

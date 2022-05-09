@@ -34,6 +34,18 @@
             android:textStyle="bold"
             />
 
+        <ImageView
+            android:id="@+id/iv_work_out"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintTop_toTopOf="@id/tv_day"
+            app:layout_constraintBottom_toBottomOf="@id/tv_day"
+            app:layout_constraintStart_toStartOf="@id/tv_day"
+            app:layout_constraintEnd_toEndOf="@id/tv_day"
+            android:background="@drawable/circle_red"
+            android:visibility="@{model.dietData.workOutList == null ? View.GONE : View.VISIBLE}"
+            />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"

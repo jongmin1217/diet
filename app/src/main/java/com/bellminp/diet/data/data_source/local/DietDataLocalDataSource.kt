@@ -6,6 +6,7 @@ import com.bellminp.diet.data.database.dao.DietDataDao
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -48,5 +49,13 @@ class DietDataLocalDataSource @Inject constructor(
 
     fun editContent(id : Long, content : String?): Completable{
         return local.editContent(id,content)
+    }
+
+    fun editWorkOut(id : Long, workOut : ArrayList<WorkOutData>?): Completable{
+        return local.editWorkOut(id,workOut)
+    }
+
+    fun getLastWeight(): Observable<List<Float>>{
+        return local.getLastWeight()
     }
 }

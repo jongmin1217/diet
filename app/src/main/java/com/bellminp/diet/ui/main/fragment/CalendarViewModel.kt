@@ -1,8 +1,12 @@
 package com.bellminp.diet.ui.main.fragment
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.bellminp.diet.domain.model.DietData
+import com.bellminp.diet.domain.model.ProfileData
 import com.bellminp.diet.domain.usecase.GetDietDataUseCase
+import com.bellminp.diet.domain.usecase.GetProfileUseCase
+import com.bellminp.diet.domain.usecase.GetWeightUseCase
 import com.bellminp.diet.ui.adapter.CalendarAdapter
 import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.data.CalendarData
@@ -19,12 +23,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CalendarViewModel @Inject constructor(
-    private val getDietDataUseCase: GetDietDataUseCase
+    private val getDietDataUseCase: GetDietDataUseCase,
+    private val getWeightUseCase: GetWeightUseCase,
+    private val getProfileUseCase: GetProfileUseCase
 ) : BaseViewModel() {
+
+    val lastWeight = MutableLiveData<Float>().default(null)
+    val profileData = MutableLiveData<ProfileData>().default(null)
 
     private val _initCalendar = SingleLiveEvent<ArrayList<CalendarData>>()
     val initCalendar: LiveData<ArrayList<CalendarData>> get() = _initCalendar
-
 
     private val _goWriteType = SingleLiveEvent<DateData>()
     val goWriteType: LiveData<DateData> get() = _goWriteType
@@ -76,6 +84,26 @@ class CalendarViewModel @Inject constructor(
         }
 
         return list
+    }
+
+    fun initLastWeight(){
+        getWeightUseCase.observableLastWeight(
+            onSuccess = {
+                lastWeight.value = if(it.isEmpty()) null else it[0]
+            }, onError = {
+                Timber.d("timber error $it")
+            }
+        )
+    }
+
+    fun initProfile(){
+        getProfileUseCase.observableProfile(
+            onSuccess = {
+                profileData.value = if(it.isEmpty()) null else it[0]
+            }, onError = {
+                Timber.d("timber error $it")
+            }
+        )
     }
 
     fun clearDietDataObserve(){

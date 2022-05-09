@@ -3,6 +3,7 @@ package com.bellminp.diet.domain.usecase
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import com.bellminp.diet.domain.repository.DietDataRepository
 import com.bellminp.diet.domain.usecase.base.UseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -115,6 +116,22 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
     ){
         addDisposable(
             repository.editFood(id,food)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(onFinished)
+                .subscribe(onSuccess, onError)
+        )
+    }
+
+    fun editWorkOut(
+        id : Long,
+        workOut : ArrayList<WorkOutData>?,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
+        onFinished: () -> Unit = {}
+    ){
+        addDisposable(
+            repository.editWorkOut(id,workOut)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(onFinished)

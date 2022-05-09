@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import com.bellminp.diet.R
 import com.bellminp.diet.databinding.ActivityAddProfileBinding
 import com.bellminp.diet.di.DietApplication
+import com.bellminp.diet.domain.model.ProfileData
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.data.BottomSheetData
 import com.bellminp.diet.ui.dialog.basic.BottomBasicDialog
@@ -46,7 +47,9 @@ class AddProfileActivity :
             topViewModel.btnBackVisible.value = true
             topViewModel.titleText.value = if(it == Constants.ADD) DietApplication.mInstance.resources.getString(R.string.add_profile_title)
             else {
-                viewModel.initEditData()
+                if(intent.hasExtra(Constants.DATA)){
+                    viewModel.initEditData(intent.getSerializableExtra(Constants.DATA) as ProfileData)
+                }
                 DietApplication.mInstance.resources.getString(R.string.profile_edit)
             }
 

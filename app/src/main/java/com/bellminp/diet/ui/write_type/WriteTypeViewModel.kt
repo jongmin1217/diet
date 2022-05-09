@@ -35,8 +35,11 @@ class WriteTypeViewModel @Inject constructor(
     private val _editIssue = SingleLiveEvent<ArrayList<Int>>()
     val editIssue: LiveData<ArrayList<Int>> get() = _editIssue
 
-    private val _deleteIssue = SingleLiveEvent<DeleteDietData>()
-    val deleteIssue: LiveData<DeleteDietData> get() = _deleteIssue
+    private val _editWorkOut = SingleLiveEvent<Int>()
+    val editWorkOut: LiveData<Int> get() = _editWorkOut
+
+    private val _deleteData = SingleLiveEvent<DeleteDietData>()
+    val deleteData: LiveData<DeleteDietData> get() = _deleteData
 
     private val _goFoodDetail = SingleLiveEvent<FoodImageData>()
     val goFoodDetail: LiveData<FoodImageData> get() = _goFoodDetail
@@ -86,6 +89,20 @@ class WriteTypeViewModel @Inject constructor(
         }
     }
 
+    fun workOutClick(position: Int){
+        _editWorkOut.value = position
+    }
+
+    fun workOutDeleteClick(position: Int){
+        dietData.value?.let {
+            _deleteData.value = DeleteDietData(
+                it.id,
+                Constants.WORK_OUT,
+                workOutList = it.workOutList,
+                position = position
+            )
+        }
+    }
 
     fun issueListClick(type: Int, position: Int) {
         _editIssue.value = arrayListOf(type, position)
@@ -93,7 +110,7 @@ class WriteTypeViewModel @Inject constructor(
 
     fun issueDeleteClick(type: Int, position: Int) {
         dietData.value?.let {
-            _deleteIssue.value = DeleteDietData(
+            _deleteData.value = DeleteDietData(
                 it.id,
                 type,
                 list = if (type == Constants.GOOD_LIST) it.goodList else it.badList,

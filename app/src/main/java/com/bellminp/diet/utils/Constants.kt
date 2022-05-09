@@ -17,5 +17,6 @@ class Constants {
         const val CONTENT = 3
         const val BODY = 4
         const val FOOD = 5
+        const val WORK_OUT = 6
     }
 }

@@ -20,14 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R.layout.fragment_profile) {
     override val viewModel by activityViewModels<ProfileViewModel>()
 
-    private val profileReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            intent?.let {
-                viewModel.refreshProfile()
-            }
-        }
-    }
-
     override fun initBinding() {
         binding.vm = viewModel
     }
@@ -36,19 +28,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R
         super.onViewCreated(view, savedInstanceState)
 
         initListener()
+        viewModel.getProfile()
     }
 
-    override fun onDestroy() {
-        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(profileReceiver)
-        super.onDestroy()
-    }
 
     private fun initListener(){
-        LocalBroadcastManager.getInstance(context!!).registerReceiver(profileReceiver, IntentFilter(Constants.PROFILE_INTENT))
-
         binding.btnAddProfile.setOnClickListener {
             val intent = Intent(context,AddProfileActivity::class.java)
-            intent.putExtra(Constants.TYPE, if(viewModel.nickname.value != null) Constants.EDIT else Constants.ADD)
+            intent.putExtra(Constants.TYPE, if(viewModel.profileData.value != null) Constants.EDIT else Constants.ADD)
+            viewModel.profileData.value?.let { data -> intent.putExtra(Constants.DATA,data) }
             startActivity(intent)
         }
     }

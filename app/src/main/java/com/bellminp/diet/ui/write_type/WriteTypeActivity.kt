@@ -23,6 +23,7 @@ import com.bellminp.diet.databinding.ActivityWriteTypeBinding
 import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.ui.adapter.FoodImageAdapter
 import com.bellminp.diet.ui.adapter.IssueListAdapter
+import com.bellminp.diet.ui.adapter.WorkOutListAdapter
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.data.DateData
 import com.bellminp.diet.ui.data.DeleteDietData
@@ -34,6 +35,7 @@ import com.bellminp.diet.ui.dialog.food_name.BottomFoodNameDialog
 import com.bellminp.diet.ui.dialog.image_detail.ImageDetailDialog
 import com.bellminp.diet.ui.dialog.photo.BottomPhotoDialog
 import com.bellminp.diet.ui.dialog.weight.BottomWeightDialog
+import com.bellminp.diet.ui.dialog.work_out.BottomWorkOutDialog
 import com.bellminp.diet.ui.dialog.yn.YnDialog
 import com.bellminp.diet.ui.dialog.yn.YnViewModel
 import com.bellminp.diet.ui.food_image.FoodImageActivity
@@ -129,7 +131,7 @@ class WriteTypeActivity :
                 }
             })
 
-            deleteIssue.observe(binding.lifecycleOwner!!, { data ->
+            deleteData.observe(binding.lifecycleOwner!!, { data ->
                 YnDialog(
                     this@WriteTypeActivity,
                     binding.lifecycleOwner!!,
@@ -142,6 +144,17 @@ class WriteTypeActivity :
                 val intent = Intent(this@WriteTypeActivity,FoodImageActivity::class.java)
                 intent.putExtra(Constants.DATA,data)
                 startActivity(intent)
+            })
+
+            editWorkOut.observe(binding.lifecycleOwner!!, { position ->
+                date?.let { date ->
+                    BottomWorkOutDialog(
+                        dietData.value?.workOutList,
+                        position,
+                        dietData.value?.id,
+                        date
+                    ).show(supportFragmentManager, "work_out")
+                }
             })
         }
     }
@@ -158,6 +171,10 @@ class WriteTypeActivity :
         BindAdapter.foodListAdapter(
             binding.recyclerviewFoodList,
             FoodImageAdapter(viewModel)
+        )
+        BindAdapter.workOutListAdapter(
+            binding.recyclerviewWorkOutList,
+            WorkOutListAdapter(viewModel)
         )
     }
 
@@ -278,6 +295,19 @@ class WriteTypeActivity :
                     )
                 }
             ).show(supportFragmentManager, "photo")
+        }
+
+        binding.btnWorkOutAdd.setOnClickListener {
+            with(viewModel) {
+                date?.let { date ->
+                    BottomWorkOutDialog(
+                        dietData.value?.workOutList,
+                        null,
+                        dietData.value?.id,
+                        date
+                    ).show(supportFragmentManager, "work_out")
+                }
+            }
         }
     }
 

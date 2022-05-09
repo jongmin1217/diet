@@ -52,7 +52,6 @@ abstract class BaseBottomSheetDialog<B : ViewDataBinding,VM : BaseViewModel>(@La
     }
 
     override fun onDestroy() {
-        Timber.d("timber onDestroy")
         viewModel.destroyedBottomDialog()
         super.onDestroy()
     }

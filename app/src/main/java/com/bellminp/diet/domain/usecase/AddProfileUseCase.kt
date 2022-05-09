@@ -1,23 +1,22 @@
 package com.bellminp.diet.domain.usecase
 
-import com.bellminp.diet.domain.model.DietData
-import com.bellminp.diet.domain.repository.DietDataRepository
+import com.bellminp.diet.domain.model.ProfileData
+import com.bellminp.diet.domain.repository.ProfileRepository
 import com.bellminp.diet.domain.usecase.base.UseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class GetDietDataUseCase @Inject constructor(private val repository: DietDataRepository) : UseCase() {
+class AddProfileUseCase @Inject constructor(private val repository: ProfileRepository) : UseCase(){
 
-    fun observableDietDataList(
-        year : Int,
-        month : Int,
-        onSuccess: ((t: List<DietData>) -> Unit),
-        onError: ((t: Throwable) -> Unit),
+    fun addProfile(
+        data : ProfileData,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
         addDisposable(
-            repository.getMonth(year, month)
+            repository.addProfile(data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(onFinished)
@@ -25,22 +24,18 @@ class GetDietDataUseCase @Inject constructor(private val repository: DietDataRep
         )
     }
 
-    fun observableDietData(
-        year : Int,
-        month : Int,
-        day : Int,
-        onSuccess: ((t: DietData?) -> Unit),
-        onError: ((t: Throwable) -> Unit),
+    fun editProfile(
+        data : ProfileData,
+        onSuccess: (() -> Unit) = {},
+        onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
         addDisposable(
-            repository.getDay(year, month,day)
+            repository.updateProfile(data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(onFinished)
                 .subscribe(onSuccess, onError)
         )
     }
-
-
 }

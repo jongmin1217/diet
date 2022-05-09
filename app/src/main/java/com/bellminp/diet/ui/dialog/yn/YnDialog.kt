@@ -48,9 +48,5 @@ class YnDialog(
             cancel()
         }
     }
-
-    override fun dismiss() {
-        viewModel.destroyedDialog()
-        super.dismiss()
-    }
+    
 }

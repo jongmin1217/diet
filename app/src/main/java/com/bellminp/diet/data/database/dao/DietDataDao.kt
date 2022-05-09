@@ -6,6 +6,7 @@ import androidx.room.Query
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -38,4 +39,10 @@ interface DietDataDao {
 
     @Query("UPDATE diet_data SET content = :content WHERE id = :id")
     fun editContent(id : Long, content : String?): Completable
+
+    @Query("UPDATE diet_data SET work_out_list = :workOut WHERE id = :id")
+    fun editWorkOut(id : Long, workOut : ArrayList<WorkOutData>?): Completable
+
+    @Query("SELECT weight FROM diet_data WHERE weight is not null ORDER BY year DESC,month DESC,day DESC")
+    fun getLastWeight(): Observable<List<Float>>
 }

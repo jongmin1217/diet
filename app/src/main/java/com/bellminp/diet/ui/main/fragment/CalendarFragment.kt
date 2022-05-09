@@ -35,6 +35,8 @@ class CalendarFragment :
         initListener()
         initAdapter()
         viewModel.initCalendar(Utils.getYear(), Utils.getMonth())
+        viewModel.initLastWeight()
+        viewModel.initProfile()
     }
 
     override fun initViewModelObserve() {

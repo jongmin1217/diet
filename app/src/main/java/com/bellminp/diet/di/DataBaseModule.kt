@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.bellminp.diet.data.database.DietDatabase
 import com.bellminp.diet.data.database.dao.DietDataDao
+import com.bellminp.diet.data.database.dao.ProfileDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,5 +25,11 @@ class DataBaseModule {
     @Singleton
     fun provideDietDataDao(database: DietDatabase) : DietDataDao{
         return database.dietDataDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideProfileDao(database: DietDatabase) : ProfileDao{
+        return database.profileDao()
     }
 }

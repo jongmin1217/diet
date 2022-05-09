@@ -5,6 +5,7 @@ import com.bellminp.diet.R
 import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 
 data class DialogData(
     val title : String = DietApplication.mInstance.resources.getString(R.string.try_delete),
@@ -21,5 +22,6 @@ data class DeleteDietData(
     val list : ArrayList<DailyData>? = null,
     val position : Int? = null,
     val foodList : ArrayList<FoodData>? = null,
-    val bodyUrl : String? = null
+    val bodyUrl : String? = null,
+    val workOutList : ArrayList<WorkOutData>? = null
 )

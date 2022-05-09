@@ -15,8 +15,6 @@ import timber.log.Timber
 @HiltAndroidApp
 class DietApplication : Application() {
 
-    private val profileIntent = Intent(Constants.PROFILE_INTENT)
-
     val shared = SharedPreferenceCtrl()
 
     companion object {
@@ -34,10 +32,6 @@ class DietApplication : Application() {
         initShared()
     }
 
-    fun sendProfileEvent(type : String){
-        profileIntent.putExtra(Constants.TYPE,type)
-        LocalBroadcastManager.getInstance(this).sendBroadcast(profileIntent)
-    }
 
     private fun initShared(){
         shared.init(this)

@@ -3,6 +3,7 @@ package com.bellminp.diet.domain.repository
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -17,4 +18,6 @@ interface DietDataRepository {
     fun editBad(id : Long, bad : ArrayList<DailyData>?): Completable
     fun editWeight(id : Long, weight : Float?): Completable
     fun editContent(id : Long, content : String?): Completable
+    fun editWorkOut(id : Long, workOut : ArrayList<WorkOutData>?): Completable
+    fun getLastWeight(): Observable<List<Float>>
 }

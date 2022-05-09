@@ -365,10 +365,83 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_work_out"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_bad"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/shape_white_8"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/iv_work_out"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/img_work_out"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_work_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="@id/iv_work_out"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_work_out"
+                        app:layout_constraintStart_toEndOf="@id/iv_work_out"
+                        android:layout_marginStart="8dp"
+                        style="@style/TitleTextview"
+                        android:text="@string/work_out"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_work_out_add"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintTop_toTopOf="@id/iv_work_out"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_work_out"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/shape_enable_button"
+                        android:textSize="14dp"
+                        android:textColor="@color/white"
+                        android:text="@string/add"
+                        android:textStyle="bold"
+                        />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_work_out_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/iv_work_out"
+                        android:layout_marginTop="10dp"
+                        android:overScrollMode="never"
+                        android:visibility="@{vm.dietData.workOutList == null ? View.GONE : View.VISIBLE}"
+                        setWorkOutList="@{vm.dietData.workOutList}"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerview_work_out_list"
+                        android:layout_marginTop="16dp"
+                        android:background="@android:color/transparent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/layout_bad"
+                    app:layout_constraintTop_toBottomOf="@id/layout_work_out"
                     android:layout_marginTop="10dp"
                     >
 

@@ -2,6 +2,7 @@ package com.bellminp.diet.ui.dialog.yn
 
 import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.FoodData
+import com.bellminp.diet.domain.model.WorkOutData
 import com.bellminp.diet.domain.usecase.AddDietDataUseCase
 import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.data.DeleteDietData
@@ -53,6 +54,14 @@ class YnViewModel @Inject constructor(
                         }
                     }
                 }
+                Constants.WORK_OUT -> {
+                    it.workOutList?.let { list ->
+                        it.position?.let { position ->
+                            list.removeAt(position)
+                            deleteWorkOutList(it.id,if(list.size == 0) null else list)
+                        }
+                    }
+                }
                 else -> return
             }
         }
@@ -60,66 +69,45 @@ class YnViewModel @Inject constructor(
 
     private fun deleteFood(id : Long, list : ArrayList<FoodData>?){
         addDietDataUseCase.editFood(
-            id,
-            list,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, list, onError = { error -> Timber.d("timber addDietData error $error") }
         )
     }
 
     private fun deleteBody(id : Long){
         addDietDataUseCase.editBody(
-            id,
-            null,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, null, onError = { error -> Timber.d("timber addDietData error $error") }
         )
     }
 
     private fun deleteGoodList(id : Long, list : ArrayList<DailyData>?){
         addDietDataUseCase.editGoodList(
-            id,
-            list,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, list, onError = { error -> Timber.d("timber addDietData error $error") }
         )
     }
 
     private fun deleteBadList(id : Long, list : ArrayList<DailyData>?){
         addDietDataUseCase.editBadList(
-            id,
-            list,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, list, onError = { error -> Timber.d("timber addDietData error $error") }
+        )
+    }
+
+    private fun deleteWorkOutList(id : Long, list : ArrayList<WorkOutData>?){
+        addDietDataUseCase.editWorkOut(
+            id,list, onError = {error -> Timber.d("timber addDietData error $error")}
         )
     }
 
 
     private fun deleteWeight(id : Long){
         addDietDataUseCase.editWeight(
-            id,
-            null,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, null, onError = { error -> Timber.d("timber addDietData error $error") }
         )
     }
 
     private fun deleteContent(id : Long){
         addDietDataUseCase.editContent(
-            id,
-            null,
-            onError = { error ->
-                Timber.d("timber addDietData error $error")
-            }
+            id, null, onError = { error -> Timber.d("timber addDietData error $error") }
         )
     }
 
-    fun destroyedDialog(){
-        addDietDataUseCase.clearDisposable()
-    }
 }
