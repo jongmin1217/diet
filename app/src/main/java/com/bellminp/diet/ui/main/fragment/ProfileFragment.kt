@@ -11,8 +11,10 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bellminp.diet.R
 import com.bellminp.diet.databinding.FragmentGraphBinding
 import com.bellminp.diet.databinding.FragmentProfileBinding
+import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.ui.add_profile.AddProfileActivity
 import com.bellminp.diet.ui.base.BaseFragment
+import com.bellminp.diet.ui.dialog.message.MessageDialog
 import com.bellminp.diet.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,6 +40,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R
             intent.putExtra(Constants.TYPE, if(viewModel.profileData.value != null) Constants.EDIT else Constants.ADD)
             viewModel.profileData.value?.let { data -> intent.putExtra(Constants.DATA,data) }
             startActivity(intent)
+        }
+
+        binding.ivBmiInfo.setOnClickListener {
+            MessageDialog(context!!,viewLifecycleOwner,viewModel,DietApplication.mInstance.resources.getString(R.string.bmi_info)).show()
         }
     }
 }

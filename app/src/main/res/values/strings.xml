@@ -29,9 +29,12 @@
     <string name="add_profile_text_gender">성별</string>
     <string name="add_profile_text_birth">생년월일</string>
     <string name="add_profile_text_type">운동 종류</string>
-
+    <string name="now_weight">현재 몸무게</string>
     <string name="diet_text">다이어트</string>
     <string name="bulk_up">벌크업</string>
+    <string name="bmi">BMI</string>
+
+    <string name="no_data">-</string>
 
     <string name="cm">cm</string>
     <string name="kg">kg</string>
@@ -111,6 +114,10 @@
     <string name="weight">몸무게</string>
     <string name="content">일기장</string>
     <string name="work_out">운동</string>
+    <string name="age">나이</string>
+
+    <string name="female">여성</string>
+    <string name="male">남성</string>
 
     <string name="goal_complete">목표 달성!!</string>
 
@@ -119,4 +126,19 @@
     <string name="camera">카메라</string>
 
     <string name="plz_photo_name">사진의 이름을 입력해 주세요.</string>
+
+
+    <string formatted="false" name="now_weight_kg">%.1fkg</string>
+
+    <string name="underweight">저체중</string>
+    <string name="normal_weight">정상체중</string>
+    <string name="obesity">비만</string>
+    <string name="overweight">과체중</string>
+
+    <string name="bmi_info">체질량지수 (BMI = body mass index)는 카우프지수로 비만을 평가하는 지수이며 세계적으로 쓰이는 공통표준 지수입니다.\n체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고 매우 간단히 규정할 수 있는 장점이 있습니다.</string>
+
+    <string name="underweight_info">저체중에 해당합니다. 저체중도 골다공증을 포함한 각종 질환의 위험요인입니다. 균형있는 식사와 규칙적인 운동으로 적정체중을 유지하세요.</string>
+    <string name="normal_weight_info">정상체중입니다. 규칙적인 운동과 좋은 생활습관을 통해 현재의 체중을 유지하시기 바랍니다. 다만, 정상체중이어도 체지방율이 높을 수 있으니 체지방과 근육량을 한번 체크해보세요.</string>
+    <string name="obesity_info">비만입니다. 앞으로 당뇨, 고혈압, 고지혈증 등의 질병의 발생과 이로 인한 합병증의 위험이 증가됩니다. 매일 30분이상, 약간 숨이 찰 정도의 유산소운동과 근력운동을 하고 식사조절을 통해 체중을 줄이세요.</string>
+    <string name="overweight_info">과체중입니다. 매일 30분이상, 약간 숨이 찰 정도의 운동과 식사조절, 생활습관 교정을 통해 적정체중을 유지해보세요.</string>
 </resources>

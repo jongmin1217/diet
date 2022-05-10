@@ -15,11 +15,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel@Inject constructor(
-    private val getProfileUseCase: GetProfileUseCase
+    private val getProfileUseCase: GetProfileUseCase,
+    private val getWeightUseCase: GetWeightUseCase
 ) : BaseViewModel() {
 
     val profileData = MutableLiveData<ProfileData>().default(null)
     val profileImg = MutableLiveData<String>().default(if (File(profileUrl).exists()) profileUrl else null)
+
+    val lastWeight = MutableLiveData<Float>().default(null)
 
     fun getProfile(){
         getProfileUseCase.observableProfile(
@@ -28,6 +31,14 @@ class ProfileViewModel@Inject constructor(
                 if(it.isNotEmpty()) profileData.value = it[0]
             }, onError = {
                 Timber.d("timber getProfile error $it")
+            }
+        )
+
+        getWeightUseCase.observableLastWeight(
+            onSuccess = {
+                lastWeight.value = if(it.isEmpty()) null else it[0]
+            }, onError = {
+                Timber.d("timber observableLastWeight error $it")
             }
         )
     }

@@ -46,6 +46,12 @@
         <item name="android:windowExitAnimation">@anim/slide_out_down</item>
     </style>
 
+    <style name="normalTextview" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:textColor">@color/color_icn_select</item>
+        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TitleTextview" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:textColor">@color/color_icn_select</item>
         <item name="android:textSize" tools:ignore="SpUsage">18dp</item>
