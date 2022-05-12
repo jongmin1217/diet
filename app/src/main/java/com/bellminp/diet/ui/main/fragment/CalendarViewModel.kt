@@ -37,6 +37,9 @@ class CalendarViewModel @Inject constructor(
     private val _goWriteType = SingleLiveEvent<DateData>()
     val goWriteType: LiveData<DateData> get() = _goWriteType
 
+    private val _noDate = SingleLiveEvent<Unit>()
+    val noDate: LiveData<Unit> get() = _noDate
+
 
     fun initCalendar(year: Int, month: Int) {
         clearDietDataObserve()
@@ -111,6 +114,7 @@ class CalendarViewModel @Inject constructor(
     }
 
     fun calendarClick(calendarData: CalendarData){
-        _goWriteType.value = DateData(calendarData.year,calendarData.month,calendarData.text?.toInt()?:0)
+        if(calendarData.year == Utils.getYear() && calendarData.month == Utils.getMonth() && calendarData.text?.toInt()?:0 > Utils.getDay()) _noDate.value = Unit
+        else _goWriteType.value = DateData(calendarData.year,calendarData.month,calendarData.text?.toInt()?:0)
     }
 }

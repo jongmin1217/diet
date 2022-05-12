@@ -57,4 +57,8 @@ class DietDataRepositoryImpl @Inject constructor(
     override fun getLastWeight(): Observable<List<Float>>{
         return dataSource.getLastWeight()
     }
+
+    override fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>{
+        return dataSource.getMonthWeight(year, month)
+    }
 }

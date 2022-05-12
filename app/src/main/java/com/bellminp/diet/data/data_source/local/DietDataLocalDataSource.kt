@@ -58,4 +58,8 @@ class DietDataLocalDataSource @Inject constructor(
     fun getLastWeight(): Observable<List<Float>>{
         return local.getLastWeight()
     }
+
+    fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>{
+        return local.getMonthWeight(year, month)
+    }
 }

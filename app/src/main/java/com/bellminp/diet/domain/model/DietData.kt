@@ -30,6 +30,17 @@ data class DietData(
         }
         return null
     }
+
+    fun totalWorkOutTime() : Int?{
+        workOutList?.let {
+            var time = 0
+            for(i in it){
+                time += i.getWorkOutMin()
+            }
+            return time
+        }
+        return null
+    }
 }
 
 data class FoodData(
@@ -58,5 +69,10 @@ data class WorkOutData(
         val minText = if((min%60).toInt()== 0) "" else "${(min%60).toInt()}분 "
 
         return String.format("%s (%s%s 운동)",time.replace("|"," ~ "),hourText,minText)
+    }
+
+    fun getWorkOutMin() : Int{
+        val differenceTime = endRegDate - startRegDate
+        return (differenceTime / (1000*60)).toInt()
     }
 }

@@ -17,7 +17,7 @@
         android:background="@color/dialog_background"
         tools:ignore="SpUsage">
 
-        <com.bellminp.diet.ui.custom.RadiusImageView
+        <com.bellminp.diet.ui.custom.RadiusPhotoView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,6 +9,8 @@ import com.bellminp.diet.R
 import com.bellminp.diet.databinding.FragmentCalendarBinding
 import com.bellminp.diet.ui.adapter.CalendarAdapter
 import com.bellminp.diet.ui.base.BaseFragment
+import com.bellminp.diet.ui.data.MonthSelectData
+import com.bellminp.diet.ui.dialog.message.MessageDialog
 import com.bellminp.diet.ui.dialog.month.BottomMonthDialog
 import com.bellminp.diet.ui.dialog.month.BottomMonthViewModel
 import com.bellminp.diet.ui.write_type.WriteTypeActivity
@@ -21,8 +23,6 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 class CalendarFragment :
     BaseFragment<FragmentCalendarBinding, CalendarViewModel>(R.layout.fragment_calendar) {
     override val viewModel by activityViewModels<CalendarViewModel>()
-    private val monthViewModel by activityViewModels<BottomMonthViewModel>()
-
 
     override fun initBinding() {
         binding.vm = viewModel
@@ -41,9 +41,9 @@ class CalendarFragment :
 
     override fun initViewModelObserve() {
         with(viewModel) {
-            initCalendar.observe(viewLifecycleOwner,{ items ->
+            initCalendar.observe(viewLifecycleOwner, { items ->
                 binding.recyclerviewCalendar.adapter?.let { adapter ->
-                    if(adapter is CalendarAdapter){
+                    if (adapter is CalendarAdapter) {
                         adapter.items = items
                     }
                 }
@@ -51,15 +51,12 @@ class CalendarFragment :
 
             goWriteType.observe(viewLifecycleOwner, { data ->
                 val intent = Intent(context, WriteTypeActivity::class.java)
-                intent.putExtra(Constants.DATA,data)
+                intent.putExtra(Constants.DATA, data)
                 startActivity(intent)
             })
-        }
 
-        with(monthViewModel) {
-            monthSelect.observe(viewLifecycleOwner, { data ->
-                binding.btnDate.text = String.format("%d.%s", data.year, Utils.dateText(data.month))
-                viewModel.initCalendar(data.year, data.month)
+            noDate.observe(viewLifecycleOwner, { data ->
+                MessageDialog(context!!,viewLifecycleOwner,viewModel,resources.getString(R.string.no_date)).show()
             })
         }
     }
@@ -81,14 +78,20 @@ class CalendarFragment :
         }
     }
 
-    private fun initValue(){
-        binding.btnDate.text = String.format("%d.%s",Utils.getYear(),Utils.dateText(Utils.getMonth()))
+    private fun initValue() {
+        binding.btnDate.text =
+            String.format("%d.%s", Utils.getYear(), Utils.dateText(Utils.getMonth()))
     }
 
     private fun initListener() {
         binding.btnDate.setOnClickListener {
             BottomMonthDialog(binding.btnDate.text.toString()).show(parentFragmentManager, "month")
         }
+    }
+
+    fun initCalendar(data : MonthSelectData) {
+        binding.btnDate.text = String.format("%d.%s", data.year, Utils.dateText(data.month))
+        viewModel.initCalendar(data.year, data.month)
     }
 
     override fun onDestroy() {

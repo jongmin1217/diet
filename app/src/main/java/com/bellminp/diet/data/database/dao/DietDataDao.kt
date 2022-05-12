@@ -45,4 +45,7 @@ interface DietDataDao {
 
     @Query("SELECT weight FROM diet_data WHERE weight is not null ORDER BY year DESC,month DESC,day DESC")
     fun getLastWeight(): Observable<List<Float>>
+
+    @Query("SELECT weight FROM diet_data WHERE year = :year AND month = :month AND weight is not null ORDER BY day DESC")
+    fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>
 }

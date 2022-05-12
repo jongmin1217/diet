@@ -42,5 +42,21 @@ class GetDietDataUseCase @Inject constructor(private val repository: DietDataRep
         )
     }
 
+    fun observableWeight(
+        year : Int,
+        month : Int,
+        onSuccess: ((t: List<Float>) -> Unit),
+        onError: ((t: Throwable) -> Unit),
+        onFinished: () -> Unit = {}
+    ){
+        addDisposable(
+            repository.getMonthWeight(year, month)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doAfterTerminate(onFinished)
+                .subscribe(onSuccess, onError)
+        )
+    }
+
 
 }

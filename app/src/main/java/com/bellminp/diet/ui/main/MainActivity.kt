@@ -3,10 +3,12 @@ package com.bellminp.diet.ui.main
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.bellminp.diet.R
 import com.bellminp.diet.databinding.ActivityMainBinding
 import com.bellminp.diet.di.DietApplication
 import com.bellminp.diet.ui.base.BaseActivity
+import com.bellminp.diet.ui.dialog.month.BottomMonthViewModel
 import com.bellminp.diet.ui.main.fragment.CalendarFragment
 import com.bellminp.diet.ui.main.fragment.GraphFragment
 import com.bellminp.diet.ui.main.fragment.ProfileFragment
@@ -14,11 +16,13 @@ import com.bellminp.diet.ui.main.fragment.SlideFragment
 import com.bellminp.diet.ui.top.TopViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
+import timber.log.Timber
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>(R.layout.activity_main) {
     override val viewModel by viewModels<MainViewModel>()
     private val topViewModel by viewModels<TopViewModel>()
+    private val monthViewModel by viewModels<BottomMonthViewModel>()
 
     private val calendarFragment = CalendarFragment()
     private var graphFragment : GraphFragment? = null
@@ -41,6 +45,17 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>(R.layout.ac
         supportFragmentManager.beginTransaction().replace(binding.frameLayout.id, calendarFragment).commit()
     }
 
+    override fun initViewModelObserve() {
+        super.initViewModelObserve()
+
+        with(monthViewModel) {
+            monthSelect.observe(binding.lifecycleOwner!!, { data ->
+                calendarFragment.initCalendar(data)
+                graphFragment?.initGraph(data)
+            })
+        }
+    }
+
     private fun initListener(){
         binding.bottomNavMain.run {
             setOnItemSelectedListener { item ->
@@ -52,7 +67,7 @@ class MainActivity : BaseActivity<ActivityMainBinding,MainViewModel>(R.layout.ac
                     R.id.bottom_nav_graph -> {
                         topViewModel.titleText.value = DietApplication.mInstance.resources.getString(R.string.title_graph)
                         if(graphFragment == null){
-                            graphFragment = GraphFragment()
+                            graphFragment = GraphFragment(calendarFragment.binding.btnDate.text.toString())
                             addFragment(graphFragment!!)
                         }else changeFragment(graphFragment!!)
                     }

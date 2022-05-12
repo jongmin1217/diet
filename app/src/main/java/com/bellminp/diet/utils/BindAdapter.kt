@@ -22,7 +22,6 @@ import com.bellminp.diet.ui.adapter.WorkOutListAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target
-import timber.log.Timber
 
 object BindAdapter {
 
@@ -58,6 +57,7 @@ object BindAdapter {
                 .into(imageView)
         }
     }
+
 
     @BindingAdapter("imageSelect")
     @JvmStatic

@@ -43,7 +43,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>(R
         }
 
         binding.ivBmiInfo.setOnClickListener {
-            MessageDialog(context!!,viewLifecycleOwner,viewModel,DietApplication.mInstance.resources.getString(R.string.bmi_info)).show()
+            MessageDialog(context!!,viewLifecycleOwner,viewModel,resources.getString(R.string.bmi_info)).show()
         }
     }
 }
