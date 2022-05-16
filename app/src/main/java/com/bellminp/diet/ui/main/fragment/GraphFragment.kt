@@ -59,9 +59,12 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
         val items = data.filter { it.weight != null }
         val list = items.map { it.weight!! }
         val minWeight = if(list.isEmpty()) 0f else{
-            if(Collections.min(list) > 2f) Collections.min(list) - 2f else 0f
+            if(Collections.min(list) > 1f) Collections.min(list) - 1f else 0f
         }
-        val maxWeight = if(list.isEmpty()) 0f else Collections.max(list) + 2f
+        val maxWeight = if(list.isEmpty()) 0f else Collections.max(list) + 1f
+
+        binding.tvMinWeightValue.text = if(minWeight == 0f) resources.getString(R.string.no_data) else String.format("%.1fkg",Collections.min(list))
+        binding.tvMaxWeightValue.text = if(maxWeight == 0f) resources.getString(R.string.no_data) else String.format("%.1fkg",Collections.max(list))
 
         val selectYear = binding.btnDate.text.toString().split(".")[0].toInt()
         val selectMonth = binding.btnDate.text.toString().split(".")[1].toInt()
@@ -75,7 +78,7 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
             textSize = 10f
             setDrawGridLines(false)
             granularity = 1f
-            axisMinimum = 0f
+            axisMinimum = 1f
             axisMaximum = lastDay
             isGranularityEnabled = true
         }
@@ -146,7 +149,7 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
             textSize = 10f
             setDrawGridLines(false)
             granularity = 1f
-            axisMinimum = 0f
+            axisMinimum = 1f
             axisMaximum = lastDay
             isGranularityEnabled = true
         }
@@ -168,16 +171,25 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
             }
         }
 
+        var cnt = 0
+        var totalWorkoutTime = 0f
         val entryList = ArrayList<Entry>()
         for(i in 0..lastDay.toInt()){
             val index = data.indexOfFirst { it.day == i }
             if(index != -1){
                 if(data[index].totalWorkOutTime() == null) entryList.add(Entry(i.toFloat(),0f))
-                else entryList.add(Entry(i.toFloat(),data[index].totalWorkOutTime()!!.toFloat()))
+                else{
+                    if(data[index].totalWorkOutTime()!!.toFloat() >= 60) cnt++
+                    totalWorkoutTime += data[index].totalWorkOutTime()!!.toFloat()
+                    entryList.add(Entry(i.toFloat(),data[index].totalWorkOutTime()!!.toFloat()))
+                }
             }else{
                 entryList.add(Entry(i.toFloat(),0f))
             }
         }
+
+        binding.tvWorkOutCntValue.text = String.format("%d회",cnt)
+        binding.tvTotalWorkOutValue.text = String.format("%d분",totalWorkoutTime.toInt())
 
         binding.chartWorkOut.data = LineData(workOutSet(entryList))
         binding.chartWorkOut.invalidate()

@@ -128,6 +128,11 @@
     <string name="plz_photo_name">사진의 이름을 입력해 주세요.</string>
     <string name="day">일</string>
 
+    <string name="min_weight">최저 몸무게</string>
+    <string name="max_weight">최대 몸무게</string>
+
+    <string name="work_out_cnt">1시간 이상 운동</string>
+    <string name="total_work_out">총 운동시간</string>
 
     <string formatted="false" name="now_weight_kg">%.1fkg</string>
 
