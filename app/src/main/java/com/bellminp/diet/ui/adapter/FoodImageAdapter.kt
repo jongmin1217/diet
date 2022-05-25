@@ -45,7 +45,7 @@ class FoodImageAdapter (private val viewModel : BaseViewModel) : RecyclerView.Ad
             binding.model = foodData
 
             binding.layout.setOnClickListener {
-                viewModel.foodImageClick(adapterPosition)
+                viewModel.foodImageClick(adapterPosition,foodData)
             }
         }
     }

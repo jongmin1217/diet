@@ -22,6 +22,7 @@ class TopViewModel : BaseViewModel() {
     val btnBackVisible = MutableLiveData<Boolean>().default(false)
     val btnDeleteVisible = MutableLiveData<Boolean>().default(false)
     val btnEditVisible = MutableLiveData<Boolean>().default(false)
+    val visible = MutableLiveData<Boolean>().default(true)
 
     fun btnBackClick(){
         _backClick.value = Unit

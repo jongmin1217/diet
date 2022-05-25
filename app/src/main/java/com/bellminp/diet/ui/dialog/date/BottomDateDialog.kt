@@ -9,7 +9,7 @@ import com.bellminp.diet.ui.base.BaseBottomSheetDialog
 import com.bellminp.diet.utils.Utils
 import com.shawnlin.numberpicker.NumberPicker
 
-class BottomDateDialog(private val initValue : String?) : BaseBottomSheetDialog<LayoutBottomDateBinding, BottomDateViewModel>(R.layout.layout_bottom_date){
+class BottomDateDialog(private val initValue : String?, private val type : Int) : BaseBottomSheetDialog<LayoutBottomDateBinding, BottomDateViewModel>(R.layout.layout_bottom_date){
 
     override val viewModel by activityViewModels<BottomDateViewModel>()
 
@@ -31,7 +31,7 @@ class BottomDateDialog(private val initValue : String?) : BaseBottomSheetDialog<
         binding.npMonth.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
         binding.npDay.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
 
-        binding.npYear.maxValue = Utils.getYear()
+        binding.npYear.maxValue = if(type == 0) Utils.getYear() else 2100
         binding.npYear.minValue = 1950
         binding.npYear.wrapSelectorWheel = false
 
@@ -60,7 +60,7 @@ class BottomDateDialog(private val initValue : String?) : BaseBottomSheetDialog<
             binding.npMonth.value = Utils.getMonth()
             binding.npDay.value = Utils.getDay()
 
-            if(binding.npYear.value == Utils.getYear() && binding.npMonth.value == Utils.getMonth()) binding.npDay.maxValue = Utils.getDay()
+            if(type == 0 && binding.npYear.value == Utils.getYear() && binding.npMonth.value == Utils.getMonth()) binding.npDay.maxValue = Utils.getDay()
         }else{
             binding.npYear.value = initValue.split(".")[0].toInt()
 
@@ -69,13 +69,18 @@ class BottomDateDialog(private val initValue : String?) : BaseBottomSheetDialog<
             binding.npMonth.value = initValue.split(".")[1].toInt()
             binding.npDay.value = initValue.split(".")[2].toInt()
 
-            if(binding.npYear.value == Utils.getYear() && binding.npMonth.value == Utils.getMonth()) binding.npDay.maxValue = Utils.getDay()
+            if(type == 0 && binding.npYear.value == Utils.getYear() && binding.npMonth.value == Utils.getMonth()) binding.npDay.maxValue = Utils.getDay()
         }
     }
 
     private fun settingDate(){
-        if(binding.npYear.value == Utils.getYear()) binding.npMonth.maxValue = Utils.getMonth()
-        else binding.npMonth.maxValue = 12
+        if(type == 0){
+            if(binding.npYear.value == Utils.getYear()) binding.npMonth.maxValue = Utils.getMonth()
+            else binding.npMonth.maxValue = 12
+        }else{
+            binding.npMonth.maxValue = 12
+        }
+
 
         when(binding.npMonth.value){
             1,3,5,7,8,10,12 -> binding.npDay.maxValue = 31
@@ -95,7 +100,8 @@ class BottomDateDialog(private val initValue : String?) : BaseBottomSheetDialog<
             viewModel.okClick(
                 binding.npYear.value,
                 binding.npMonth.value,
-                binding.npDay.value
+                binding.npDay.value,
+                type
             )
         }
     }

@@ -31,6 +31,14 @@ class AddProfileViewModel @Inject constructor(
         checkPost()
     }.default("")
 
+    val startWorkOut = DelegateLiveData<String> { _, _ ->
+        checkPost()
+    }.default("")
+
+    val endWorkOut = DelegateLiveData<String> { _, _ ->
+        checkPost()
+    }.default("")
+
     val checkFemale = DelegateLiveData<Boolean> { old, new ->
         if (old != new) checkGender(new, 0)
     }.default(false)
@@ -81,7 +89,7 @@ class AddProfileViewModel @Inject constructor(
 
     private fun checkPost() {
         checkPost.value =
-            birth.value?.isNotEmpty() ?: false && (checkFemale.value == true || checkMale.value == true) && (checkBulkUp.value == true || checkDiet.value == true) && nickname.value?.isNotEmpty() ?: false
+            birth.value?.isNotEmpty() ?: false && startWorkOut.value?.isNotEmpty() ?: false && endWorkOut.value?.isNotEmpty() ?: false && (checkFemale.value == true || checkMale.value == true) && (checkBulkUp.value == true || checkDiet.value == true) && nickname.value?.isNotEmpty() ?: false
                     && height.value?.isNotEmpty() ?: false && initWeight.value?.isNotEmpty() ?: false && goalWeight.value?.isNotEmpty() ?: false
     }
 
@@ -109,7 +117,9 @@ class AddProfileViewModel @Inject constructor(
                     else -> 0
                 },
                 initWeight.value?.toFloat() ?: 0F,
-                goalWeight.value?.toFloat() ?: 0F
+                goalWeight.value?.toFloat() ?: 0F,
+                startWorkOut.value?:"",
+                endWorkOut.value?:""
             ).apply {
                 if (edit.value == true) {
                     addProfileUseCase.editProfile(this,
@@ -139,6 +149,8 @@ class AddProfileViewModel @Inject constructor(
         if (File(profileUrl).exists()) profileImg.value = profileUrl
 
         birth.value = data.birth
+        startWorkOut.value = data.startDate
+        endWorkOut.value = data.endDate
 
         if (data.gender == 0) checkFemale.value = true
         else checkMale.value = true

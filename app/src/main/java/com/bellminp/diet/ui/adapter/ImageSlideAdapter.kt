@@ -19,13 +19,15 @@ import com.bellminp.diet.ui.base.BasePagerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 
 class ImageSlideAdapter(
     private val context: Context,
     private val lifecycle: LifecycleOwner,
-    private val list: ArrayList<FoodData>
+    private val list: ArrayList<FoodData>,
+    private val onClick : () -> Unit
 ) :BasePagerAdapter(list){
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 
@@ -37,6 +39,10 @@ class ImageSlideAdapter(
 
 
         container.addView(binding.root)
+
+        binding.ivImage.setOnClickListener {
+            onClick()
+        }
 
         return binding.root
 

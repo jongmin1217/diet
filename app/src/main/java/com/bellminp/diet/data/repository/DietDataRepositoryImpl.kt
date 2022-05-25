@@ -61,4 +61,24 @@ class DietDataRepositoryImpl @Inject constructor(
     override fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>{
         return dataSource.getMonthWeight(year, month)
     }
+
+    override fun getFoodImage(regDate : Long): Single<List<DietData>>{
+        return dataSource.getFoodImage(regDate)
+    }
+
+    override fun getAllFoodImage(): Single<List<DietData>>{
+        return dataSource.getAllFoodImage()
+    }
+
+    override fun getBodyImage(regDate : Long): Single<List<DietData>>{
+        return dataSource.getBodyImage(regDate)
+    }
+
+    override fun getAllBodyImage(): Single<List<DietData>>{
+        return dataSource.getAllBodyImage()
+    }
+
+    override fun getBodyImageRange(startDate : Long, endDate : Long): Single<List<DietData>>{
+        return dataSource.getBodyImageRange(startDate,endDate)
+    }
 }

@@ -5,11 +5,12 @@
     <string name="calendar">캘린더</string>
     <string name="graph">그래프</string>
     <string name="slide">슬라이드</string>
+    <string name="picture">사진</string>
     <string name="profile">프로필</string>
 
     <string name="title_calendar">소영이의 다이어트 일지</string>
     <string name="title_graph">소영이 몸무게 그래프</string>
-    <string name="title_slide">소영이 뱃살 슬라이드</string>
+    <string name="title_slide">소영이 뱃살 사진</string>
     <string name="title_profile">소영이 프로필</string>
 
     <string name="title_write_type">다이어트 일지 관리</string>
@@ -29,6 +30,8 @@
     <string name="add_profile_text_gender">성별</string>
     <string name="add_profile_text_birth">생년월일</string>
     <string name="add_profile_text_type">운동 종류</string>
+    <string name="add_profile_start_work_out">운동 시작일</string>
+    <string name="add_profile_end_work_out">운동 종료일</string>
     <string name="now_weight">현재 몸무게</string>
     <string name="diet_text">다이어트</string>
     <string name="bulk_up">벌크업</string>
@@ -141,13 +144,35 @@
     <string name="obesity">비만</string>
     <string name="overweight">과체중</string>
 
+    <string name="slide_time">슬라이드 시간</string>
+
+    <string name="second_1">1초</string>
+    <string name="second_2">2초</string>
+    <string name="second_3">3초</string>
+
+    <string name="view_slide">슬라이드 보기</string>
+
+    <string name="food_picture">음식 사진</string>
+    <string name="body_picture">바디체크 사진</string>
+    <string name="body_slide">바디체크 슬라이드</string>
+
     <string name="weight_graph">몸무게 그래프</string>
     <string name="work_out_graph">운동 그래프</string>
+
+    <string name="slide_range_title">슬라이드 기간 설정</string>
+
+    <string name="all_view">전체 기간 보기</string>
+    <string name="range_view">기간 선택</string>
+
+    <string name="select_complete">선택 완료</string>
+
+    <string name="start_date">시작 날짜</string>
+    <string name="end_date">종료 날짜</string>
 
     <string name="weight_title">몸무게 (kg)</string>
     <string name="work_out_title">운동시간 (분)</string>
 
-    <string name="no_date">미래는 아직 오지 않았어요 ^^\n(조작 금지)</string>
+    <string name="no_date">미래는 아직 오지 않았어요\n(조작 금지)</string>
 
     <string name="bmi_info">체질량지수 (BMI = body mass index)는 카우프지수로 비만을 평가하는 지수이며 세계적으로 쓰이는 공통표준 지수입니다.\n체지방의 정도를 표준체중보다 비교적 정확하게 반영할 수 있고 매우 간단히 규정할 수 있는 장점이 있습니다.</string>
 

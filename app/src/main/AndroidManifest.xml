@@ -62,6 +62,26 @@
             tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.Diet" />
 
+        <activity
+            android:name=".ui.food_image_list.FoodImageListActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
+
+        <activity
+            android:name=".ui.body_image.BodyImageActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
+
+        <activity
+            android:name=".ui.body_slide.setting.BodySlideSettingActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.Diet" />
 
         <provider
             android:authorities="com.bellminp.diet.fileprovider"

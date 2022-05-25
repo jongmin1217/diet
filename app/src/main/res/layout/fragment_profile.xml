@@ -66,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_profile_img"
                 android:layout_marginTop="16dp"
-                android:textSize="16dp"
+                android:textSize="18dp"
                 android:textColor="@color/color_icn_select"
                 android:textStyle="bold"
                 android:text="@{vm.profileData != null ? vm.profileData.nickname : @string/nickname_empty}"
@@ -174,11 +174,35 @@
                     />
 
                 <TextView
-                    android:id="@+id/tv_now_weight"
+                    android:id="@+id/tv_start_work_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/normalTextview"
                     app:layout_constraintTop_toBottomOf="@id/tv_goal_weight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/add_profile_start_work_out"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_end_work_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/normalTextview"
+                    app:layout_constraintTop_toBottomOf="@id/tv_start_work_out"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/add_profile_end_work_out"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_now_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/normalTextview"
+                    app:layout_constraintTop_toBottomOf="@id/tv_end_work_out"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="16dp"
@@ -291,6 +315,28 @@
                     app:layout_constraintStart_toEndOf="@id/line_center"
                     android:layout_marginStart="16dp"
                     android:text="@{vm.profileData.goalWeightText}"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/normalTextview"
+                    android:id="@+id/tv_start_work_out_value"
+                    app:layout_constraintTop_toTopOf="@id/tv_start_work_out"
+                    app:layout_constraintStart_toEndOf="@id/line_center"
+                    android:layout_marginStart="16dp"
+                    android:text="@{vm.profileData.startWorkOutText}"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/normalTextview"
+                    android:id="@+id/tv_end_work_out_value"
+                    app:layout_constraintTop_toTopOf="@id/tv_end_work_out"
+                    app:layout_constraintStart_toEndOf="@id/line_center"
+                    android:layout_marginStart="16dp"
+                    android:text="@{vm.profileData.endWorkOutText}"
                     />
 
                 <TextView

@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bellminp.diet.domain.model.DietData
+import com.bellminp.diet.domain.model.FoodData
 import com.bellminp.diet.domain.usecase.AddDietDataUseCase
 import com.bellminp.diet.domain.usecase.GetDietDataUseCase
 import com.bellminp.diet.ui.base.BaseViewModel
@@ -41,8 +42,7 @@ class WriteTypeViewModel @Inject constructor(
     private val _deleteData = SingleLiveEvent<DeleteDietData>()
     val deleteData: LiveData<DeleteDietData> get() = _deleteData
 
-    private val _goFoodDetail = SingleLiveEvent<FoodImageData>()
-    val goFoodDetail: LiveData<FoodImageData> get() = _goFoodDetail
+
 
     var date: DateData? = null
     val dietData = MutableLiveData<DietData>().default(null)
@@ -119,10 +119,10 @@ class WriteTypeViewModel @Inject constructor(
         }
     }
 
-    override fun foodImageClick(position: Int){
+    override fun foodImageClick(position: Int, foodData : FoodData){
         dietData.value?.let {
             it.food?.let { food->
-                _goFoodDetail.value = FoodImageData(it.id,food,position)
+                goFoodDetail(FoodImageData(it.id,food,position))
             }
         }
     }

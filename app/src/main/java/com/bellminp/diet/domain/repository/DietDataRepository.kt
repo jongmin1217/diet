@@ -21,4 +21,9 @@ interface DietDataRepository {
     fun editWorkOut(id : Long, workOut : ArrayList<WorkOutData>?): Completable
     fun getLastWeight(): Observable<List<Float>>
     fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>
+    fun getFoodImage(regDate : Long): Single<List<DietData>>
+    fun getAllFoodImage(): Single<List<DietData>>
+    fun getBodyImage(regDate : Long): Single<List<DietData>>
+    fun getAllBodyImage(): Single<List<DietData>>
+    fun getBodyImageRange(startDate : Long, endDate : Long): Single<List<DietData>>
 }

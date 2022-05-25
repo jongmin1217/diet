@@ -18,6 +18,7 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
         onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
+        data.settingDate()
         addDisposable(
             repository.addDietData(data)
                 .subscribeOn(Schedulers.io())

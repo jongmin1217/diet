@@ -41,6 +41,7 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
 
         binding.btnDate.text = initDate
         viewModel.initWeight(initDate.split(".")[0].toInt(),initDate.split(".")[1].toInt())
+        viewModel.initWorkDate()
         initListener()
     }
 
@@ -122,7 +123,7 @@ class GraphFragment(private val initDate : String) : BaseFragment<FragmentGraphB
             setCircleColor(resources.getColor(R.color.red,null))
             valueTextSize = 10f
             valueFormatter = WeightValueFormatter()
-            lineWidth = 3f
+            lineWidth = 1.5f
             circleRadius = 3f
             fillAlpha = 0
             fillColor = resources.getColor(R.color.red,null)

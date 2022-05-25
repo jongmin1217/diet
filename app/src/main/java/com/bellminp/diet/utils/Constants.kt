@@ -18,5 +18,17 @@ class Constants {
         const val BODY = 4
         const val FOOD = 5
         const val WORK_OUT = 6
+
+        const val BIRTH = 0
+        const val START_WORK_OUT = 1
+        const val END_WORK_OUT = 2
+        const val START_DATE = 3
+        const val END_DATE = 4
+
+        const val CHECK_ALL = 0
+        const val CHECK_RANGE = 1
+        const val CHECK_1 = 2
+        const val CHECK_2 = 3
+        const val CHECK_3 = 4
     }
 }

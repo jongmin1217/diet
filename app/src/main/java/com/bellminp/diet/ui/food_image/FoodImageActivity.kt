@@ -21,6 +21,7 @@ import com.bellminp.diet.ui.intro.IntroViewModel
 import com.bellminp.diet.ui.top.TopViewModel
 import com.bellminp.diet.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class FoodImageActivity :
@@ -44,7 +45,9 @@ class FoodImageActivity :
         data = intent.getSerializableExtra(Constants.DATA) as FoodImageData
 
         data?.let {
-            imageSlideAdapter = ImageSlideAdapter(this, binding.lifecycleOwner!!, it.list)
+            imageSlideAdapter = ImageSlideAdapter(this, binding.lifecycleOwner!!, it.list,{
+                topViewModel.visible.value = topViewModel.visible.value != true
+            })
             val dpValue = 20
             val d = resources.displayMetrics.density
             val margin = (dpValue * d).toInt()
@@ -60,8 +63,10 @@ class FoodImageActivity :
 
             with(topViewModel) {
                 btnBackVisible.value = true
-                btnDeleteVisible.value = true
-                btnEditVisible.value = true
+                if(it.id != -1L){
+                    btnDeleteVisible.value = true
+                    btnEditVisible.value = true
+                }
                 titleText.value = it.list[it.position].type
             }
         }

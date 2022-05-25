@@ -16,7 +16,7 @@
     <item
         android:id="@+id/bottom_nav_slide"
         android:icon="@drawable/icn_picture_select"
-        android:title="@string/slide"
+        android:title="@string/picture"
         app:showAsAction="ifRoom" />
 
     <item

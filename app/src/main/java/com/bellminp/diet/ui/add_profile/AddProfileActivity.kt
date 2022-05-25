@@ -78,11 +78,27 @@ class AddProfileActivity :
         }
 
         binding.ivCalendar.setOnClickListener {
-            BottomDateDialog(null).show(supportFragmentManager, "date")
+            BottomDateDialog(null,Constants.BIRTH).show(supportFragmentManager, "date")
         }
 
         binding.tvBirthValue.setOnClickListener {
-            BottomDateDialog(viewModel.birth.value).show(supportFragmentManager, "date")
+            BottomDateDialog(viewModel.birth.value,Constants.BIRTH).show(supportFragmentManager, "date")
+        }
+
+        binding.ivStartWorkOut.setOnClickListener {
+            BottomDateDialog(null,Constants.START_WORK_OUT).show(supportFragmentManager, "date")
+        }
+
+        binding.tvStartWorkOutValue.setOnClickListener {
+            BottomDateDialog(viewModel.startWorkOut.value,Constants.START_WORK_OUT).show(supportFragmentManager, "date")
+        }
+
+        binding.ivEndWorkOut.setOnClickListener {
+            BottomDateDialog(null,Constants.END_WORK_OUT).show(supportFragmentManager, "date")
+        }
+
+        binding.tvEndWorkOutValue.setOnClickListener {
+            BottomDateDialog(viewModel.endWorkOut.value,Constants.END_WORK_OUT).show(supportFragmentManager, "date")
         }
 
 
@@ -110,7 +126,12 @@ class AddProfileActivity :
 
         with(dateViewModel){
             dateSelect.observe(binding.lifecycleOwner!!, { birth ->
-                viewModel.birth.value = String.format("%d.%d.%d",birth.year,birth.month,birth.day)
+                when(birth.type){
+                    Constants.BIRTH -> viewModel.birth.value = String.format("%d.%d.%d",birth.year,birth.month,birth.day)
+                    Constants.START_WORK_OUT -> viewModel.startWorkOut.value = String.format("%d.%d.%d",birth.year,birth.month,birth.day)
+                    Constants.END_WORK_OUT -> viewModel.endWorkOut.value = String.format("%d.%d.%d",birth.year,birth.month,birth.day)
+                }
+
             })
         }
     }

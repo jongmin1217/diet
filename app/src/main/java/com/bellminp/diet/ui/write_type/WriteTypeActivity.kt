@@ -140,11 +140,7 @@ class WriteTypeActivity :
                 ).show()
             })
 
-            goFoodDetail.observe(binding.lifecycleOwner!!,{data ->
-                val intent = Intent(this@WriteTypeActivity,FoodImageActivity::class.java)
-                intent.putExtra(Constants.DATA,data)
-                startActivity(intent)
-            })
+
 
             editWorkOut.observe(binding.lifecycleOwner!!, { position ->
                 date?.let { date ->
@@ -372,7 +368,9 @@ class WriteTypeActivity :
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1000) {
-            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                takePhoto(0)
+            }else{
                 Toast.makeText(
                     this,
                     DietApplication.mInstance.resources.getString(R.string.camera_permission),

@@ -16,6 +16,7 @@
         android:layout_height="60dp"
         tools:ignore="ContentDescription,SpUsage"
         android:background="@color/top_background"
+        android:visibility="@{vm.visible ? View.VISIBLE : View.GONE}"
         >
 
         <ImageView

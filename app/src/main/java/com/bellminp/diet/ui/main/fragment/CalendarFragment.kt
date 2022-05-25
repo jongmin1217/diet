@@ -55,7 +55,7 @@ class CalendarFragment :
                 startActivity(intent)
             })
 
-            noDate.observe(viewLifecycleOwner, { data ->
+            noDate.observe(viewLifecycleOwner, {
                 MessageDialog(context!!,viewLifecycleOwner,viewModel,resources.getString(R.string.no_date)).show()
             })
         }

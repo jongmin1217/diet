@@ -62,4 +62,24 @@ class DietDataLocalDataSource @Inject constructor(
     fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>{
         return local.getMonthWeight(year, month)
     }
+
+    fun getFoodImage(regDate : Long): Single<List<DietData>>{
+        return local.getFoodImage(regDate)
+    }
+
+    fun getAllFoodImage(): Single<List<DietData>>{
+        return local.getAllFoodImage()
+    }
+
+    fun getBodyImage(regDate : Long): Single<List<DietData>>{
+        return local.getBodyImage(regDate)
+    }
+
+    fun getAllBodyImage(): Single<List<DietData>>{
+        return local.getAllBodyImage()
+    }
+
+    fun getBodyImageRange(startDate : Long, endDate : Long): Single<List<DietData>>{
+        return local.getBodyImageRange(startDate,endDate)
+    }
 }

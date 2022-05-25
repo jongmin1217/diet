@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatDialog
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.bellminp.diet.R
+import com.bellminp.diet.ui.food_image.FoodImageActivity
 import com.bellminp.diet.ui.write_type.WriteTypeActivity
 import com.bellminp.diet.utils.Constants
 import timber.log.Timber
@@ -73,7 +74,11 @@ abstract class BaseActivity <B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes
                 finish()
             })
 
-
+            goFoodDetail.observe(binding.lifecycleOwner!!,{data ->
+                val intent = Intent(this@BaseActivity, FoodImageActivity::class.java)
+                intent.putExtra(Constants.DATA,data)
+                startActivity(intent)
+            })
         }
     }
 

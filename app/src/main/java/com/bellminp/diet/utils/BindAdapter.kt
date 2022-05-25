@@ -15,10 +15,7 @@ import com.bellminp.diet.domain.model.DailyData
 import com.bellminp.diet.domain.model.FoodData
 import com.bellminp.diet.domain.model.ProfileData
 import com.bellminp.diet.domain.model.WorkOutData
-import com.bellminp.diet.ui.adapter.CalendarAdapter
-import com.bellminp.diet.ui.adapter.FoodImageAdapter
-import com.bellminp.diet.ui.adapter.IssueListAdapter
-import com.bellminp.diet.ui.adapter.WorkOutListAdapter
+import com.bellminp.diet.ui.adapter.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target
@@ -122,6 +119,32 @@ object BindAdapter {
         }
     }
 
+    fun bodyImageAdapter(recyclerview: RecyclerView,adapter : BodyImageAdapter) {
+        if(recyclerview.adapter == null){
+            if (!adapter.hasObservers()) adapter.setHasStableIds(true)
+
+            recyclerview.layoutManager = GridLayoutManager(recyclerview.context, 2)
+            recyclerview.adapter = adapter
+            val animator = recyclerview.itemAnimator
+            if (animator is SimpleItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
+        }
+    }
+
+    fun dateFoodAdapter(recyclerview: RecyclerView,adapter : FoodImageAdapter) {
+        if(recyclerview.adapter == null){
+            if (!adapter.hasObservers()) adapter.setHasStableIds(true)
+
+            recyclerview.layoutManager = GridLayoutManager(recyclerview.context, 4)
+            recyclerview.adapter = adapter
+            val animator = recyclerview.itemAnimator
+            if (animator is SimpleItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
+        }
+    }
+
     @BindingAdapter("setFoodList")
     @JvmStatic
     fun setFoodList(recyclerview: RecyclerView, items: ArrayList<FoodData>?) {
@@ -146,6 +169,24 @@ object BindAdapter {
     @BindingAdapter("workOutListAdapter")
     @JvmStatic
     fun workOutListAdapter(recyclerview: RecyclerView, adapter: WorkOutListAdapter) {
+        if (recyclerview.adapter == null) {
+            if (!adapter.hasObservers()) adapter.setHasStableIds(true)
+
+            val lm = LinearLayoutManager(recyclerview.context)
+
+            recyclerview.layoutManager = lm
+            recyclerview.adapter = adapter
+
+            val animator = recyclerview.itemAnimator
+            if (animator is SimpleItemAnimator) {
+                animator.supportsChangeAnimations = false
+            }
+        }
+    }
+
+    @BindingAdapter("foodImageListAdapter")
+    @JvmStatic
+    fun foodImageListAdapter(recyclerview: RecyclerView, adapter: FoodImageListAdapter) {
         if (recyclerview.adapter == null) {
             if (!adapter.hasObservers()) adapter.setHasStableIds(true)
 

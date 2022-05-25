@@ -17,7 +17,9 @@ data class ProfileData(
     val gender: Int,
     val type: Int,
     val initWeight: Float,
-    val goalWeight: Float
+    val goalWeight: Float,
+    val startDate : String,
+    val endDate : String
 ) : Serializable {
     fun getAge(): String {
         val year = birth.split(".")[0].toInt()
@@ -40,6 +42,10 @@ data class ProfileData(
     fun getInitWeightText() = String.format("%.1fkg", initWeight)
 
     fun getGoalWeightText() = String.format("%.1fkg", goalWeight)
+
+    fun getStartWorkOutText() = String.format("%s년 %s월 %s일",startDate.split(".")[0],startDate.split(".")[1],startDate.split(".")[2])
+
+    fun getEndWorkOutText() = String.format("%s년 %s월 %s일",endDate.split(".")[0],endDate.split(".")[1],endDate.split(".")[2])
 
     fun getBmi(nowWeight : Float) : String{
         val heightM = height/100

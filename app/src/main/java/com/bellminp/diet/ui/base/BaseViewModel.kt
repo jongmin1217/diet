@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bellminp.diet.BuildConfig
+import com.bellminp.diet.domain.model.FoodData
 import com.bellminp.diet.ui.data.BottomSheetData
 import com.bellminp.diet.ui.data.CalendarData
+import com.bellminp.diet.ui.data.FoodImageData
 import com.bellminp.diet.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -30,6 +32,9 @@ abstract class BaseViewModel : ViewModel() {
     private val _dialogDismiss = SingleLiveEvent<Unit>()
     val dialogDismiss: LiveData<Unit> get() = _dialogDismiss
 
+    private val _goFoodDetail = SingleLiveEvent<FoodImageData>()
+    val goFoodDetail: LiveData<FoodImageData> get() = _goFoodDetail
+
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -42,6 +47,10 @@ abstract class BaseViewModel : ViewModel() {
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
+    }
+
+    fun goFoodDetail(value : FoodImageData){
+        _goFoodDetail.value = value
     }
 
     fun layoutClick(){
@@ -64,7 +73,7 @@ abstract class BaseViewModel : ViewModel() {
         _dialogDismiss.value = Unit
     }
 
-    open fun foodImageClick(position: Int){}
+    open fun foodImageClick(position: Int, foodData : FoodData){}
 
     open fun destroyedBottomDialog(){}
 
