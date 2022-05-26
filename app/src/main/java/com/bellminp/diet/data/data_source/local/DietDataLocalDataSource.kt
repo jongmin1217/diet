@@ -27,8 +27,8 @@ class DietDataLocalDataSource @Inject constructor(
         return local.addDietData(data)
     }
 
-    fun editFood(id : Long, food : ArrayList<FoodData>?): Completable{
-        return local.editFood(id,food)
+    fun editFood(id : Long, food : ArrayList<FoodData>?, foodHave : Boolean): Completable{
+        return local.editFood(id,food,foodHave)
     }
 
     fun editBody(id : Long, body : String?): Completable{

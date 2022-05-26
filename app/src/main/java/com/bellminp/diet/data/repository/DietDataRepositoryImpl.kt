@@ -26,8 +26,8 @@ class DietDataRepositoryImpl @Inject constructor(
         return dataSource.addDietData(data)
     }
 
-    override fun editFood(id : Long, food : ArrayList<FoodData>?): Completable{
-        return dataSource.editFood(id,food)
+    override fun editFood(id : Long, food : ArrayList<FoodData>?, foodHave : Boolean): Completable{
+        return dataSource.editFood(id,food,foodHave)
     }
 
     override fun editBody(id : Long, body : String?): Completable{

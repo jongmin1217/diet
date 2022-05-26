@@ -8,6 +8,7 @@ import com.bellminp.diet.domain.repository.DietDataRepository
 import com.bellminp.diet.domain.usecase.base.UseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class AddDietDataUseCase @Inject constructor(private val repository: DietDataRepository) : UseCase() {
@@ -19,6 +20,7 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
         onFinished: () -> Unit = {}
     ){
         data.settingDate()
+        data.foodCheck()
         addDisposable(
             repository.addDietData(data)
                 .subscribeOn(Schedulers.io())
@@ -115,8 +117,9 @@ class AddDietDataUseCase @Inject constructor(private val repository: DietDataRep
         onError: ((t: Throwable) -> Unit) = {},
         onFinished: () -> Unit = {}
     ){
+        Timber.d("timber $food ${food!=null}")
         addDisposable(
-            repository.editFood(id,food)
+            repository.editFood(id,food,food!=null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(onFinished)

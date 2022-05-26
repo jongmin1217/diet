@@ -12,7 +12,7 @@ interface DietDataRepository {
     fun getMonth(year : Int, month : Int): Observable<List<DietData>>
     fun getDay(year : Int, month : Int, day : Int): Observable<DietData?>
     fun addDietData(data : DietData) : Single<Long>
-    fun editFood(id : Long, food : ArrayList<FoodData>?): Completable
+    fun editFood(id : Long, food : ArrayList<FoodData>?, foodHave : Boolean): Completable
     fun editBody(id : Long, body : String?): Completable
     fun editGood(id : Long, good : ArrayList<DailyData>?): Completable
     fun editBad(id : Long, bad : ArrayList<DailyData>?): Completable

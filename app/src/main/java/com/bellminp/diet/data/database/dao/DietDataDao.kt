@@ -22,8 +22,8 @@ interface DietDataDao {
     @Insert
     fun addDietData(data : DietData) : Single<Long>
 
-    @Query("UPDATE diet_data SET food_list = :food WHERE id = :id")
-    fun editFood(id : Long, food : ArrayList<FoodData>?): Completable
+    @Query("UPDATE diet_data SET food_list = :food, foodHave = :foodHave WHERE id = :id")
+    fun editFood(id : Long, food : ArrayList<FoodData>?, foodHave : Boolean): Completable
 
     @Query("UPDATE diet_data SET body = :body WHERE id = :id")
     fun editBody(id : Long, body : String?): Completable
@@ -49,10 +49,10 @@ interface DietDataDao {
     @Query("SELECT weight FROM diet_data WHERE year = :year AND month = :month AND weight is not null ORDER BY day DESC")
     fun getMonthWeight(year : Int, month : Int): Observable<List<Float>>
 
-    @Query("SELECT * FROM diet_data WHERE regDate < :regDate ORDER BY regDate DESC LIMIT 10")
+    @Query("SELECT * FROM diet_data WHERE regDate < :regDate AND foodHave = 1 ORDER BY regDate DESC LIMIT 10")
     fun getFoodImage(regDate : Long): Single<List<DietData>>
 
-    @Query("SELECT * FROM diet_data WHERE food_list is not null ORDER BY regDate DESC")
+    @Query("SELECT * FROM diet_data WHERE foodHave = 1 ORDER BY regDate DESC")
     fun getAllFoodImage(): Single<List<DietData>>
 
     @Query("SELECT * FROM diet_data WHERE regDate < :regDate AND body is not null ORDER BY regDate DESC LIMIT 10")

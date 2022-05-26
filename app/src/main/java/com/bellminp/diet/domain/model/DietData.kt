@@ -26,7 +26,8 @@ data class DietData(
     val content : String? = null,
     @ColumnInfo(name = "work_out_list")
     val workOutList : ArrayList<WorkOutData>? = null,
-    var regDate : Long? = null
+    var regDate : Long? = null,
+    var foodHave : Boolean = false
 ) : Serializable{
     fun weightText() : String?{
         weight?.let {
@@ -51,6 +52,10 @@ data class DietData(
         val dateFormat = SimpleDateFormat("yyyy:MM:dd")
         val date = dateFormat.parse("${year}:${Utils.dateText(month)}:${Utils.dateText(day)}")
         regDate = date!!.time
+    }
+
+    fun foodCheck(){
+        foodHave = food != null
     }
 
     fun getDateText() = String.format("%d.%s.%s",year,Utils.dateText(month),Utils.dateText(day))
