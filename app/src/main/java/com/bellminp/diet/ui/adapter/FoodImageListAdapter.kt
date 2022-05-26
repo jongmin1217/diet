@@ -2,6 +2,7 @@ package com.bellminp.diet.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bellminp.diet.databinding.ItemFoodImageListBinding
@@ -12,7 +13,9 @@ import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.write_type.WriteTypeViewModel
 import com.bellminp.diet.utils.BindAdapter
 
-class FoodImageListAdapter(private val viewModel : BaseViewModel) : RecyclerView.Adapter<FoodImageListAdapter.ViewHolder>(){
+class FoodImageListAdapter(
+    private val viewModel : BaseViewModel
+) : RecyclerView.Adapter<FoodImageListAdapter.ViewHolder>(){
 
     var items = ArrayList<DietData>()
         @SuppressLint("NotifyDataSetChanged")
@@ -49,6 +52,12 @@ class FoodImageListAdapter(private val viewModel : BaseViewModel) : RecyclerView
 
         fun bind(dietData: DietData){
             binding.model = dietData
+
+            binding.viewTop.visibility = if(adapterPosition == 0) View.VISIBLE
+            else View.GONE
+
+            binding.viewBottom.visibility = if(adapterPosition == itemCount - 1) View.VISIBLE
+            else View.GONE
 
             val adapter = FoodImageAdapter(viewModel)
             BindAdapter.dateFoodAdapter(binding.recyclerviewDateFood, adapter)

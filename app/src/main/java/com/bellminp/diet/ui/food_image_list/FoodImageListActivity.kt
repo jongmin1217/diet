@@ -60,21 +60,17 @@ class FoodImageListActivity : BaseActivity<ActivityFoodImageListBinding,FoodImag
     }
 
     private fun initListener(){
+        binding.recyclerviewFoodList.setOnScrollChangeListener { _, _, _, _, _ ->
+            val layoutManager = binding.recyclerviewFoodList.layoutManager as LinearLayoutManager
+            val lastPosition = layoutManager.findLastVisibleItemPosition()
+            val size = adapter.itemCount
 
-        binding.recyclerviewFoodList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                Timber.d("timber $dy")
-//                val layoutManager = binding.recyclerviewFoodList.layoutManager as LinearLayoutManager
-//                val lastPosition = layoutManager.findLastVisibleItemPosition()
-//                val size = adapter.itemCount
-//
-//                if(lastPosition > size-7 && !viewModel.loading){
-//                    Timber.d("timber $lastPosition")
-//                    viewModel.getFoodImage(true)
-//                }
+            if(lastPosition > size-4 && !viewModel.loading){
+                viewModel.getFoodImage(true)
             }
-        })
+        }
+
+
     }
 
     override fun initViewModelObserve() {

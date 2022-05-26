@@ -17,12 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:id="@+id/view_top"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_date"
             style="@style/TitleTextview"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_top"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
@@ -38,6 +47,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="11dp"
             android:layout_marginEnd="16dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/view_bottom"
+            app:layout_constraintTop_toBottomOf="@id/recyclerview_date_food"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

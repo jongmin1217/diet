@@ -59,6 +59,8 @@ data class DietData(
     }
 
     fun getDateText() = String.format("%d.%s.%s",year,Utils.dateText(month),Utils.dateText(day))
+
+
 }
 
 data class FoodData(

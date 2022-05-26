@@ -21,37 +21,13 @@
         android:background="@color/color_background"
         tools:ignore="SpUsage">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/recyclerview_food_list"
             android:overScrollMode="never"
-            >
+            />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recyclerview_food_list"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:overScrollMode="never"
-                    android:layout_marginTop="54dp"
-                    />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    app:layout_constraintTop_toBottomOf="@id/recyclerview_food_list"
-                    android:layout_marginTop="20dp"
-                    android:background="@android:color/transparent"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.core.widget.NestedScrollView>
 
         <include
             android:id="@+id/layout_top"
