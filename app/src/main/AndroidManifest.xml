@@ -83,6 +83,13 @@
             tools:ignore="LockedOrientationActivity"
             android:theme="@style/Theme.Diet" />
 
+        <activity
+            android:name=".ui.body_slide.show.BodySlideShowActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/SlideTheme" />
+
         <provider
             android:authorities="com.bellminp.diet.fileprovider"
             android:name="androidx.core.content.FileProvider"

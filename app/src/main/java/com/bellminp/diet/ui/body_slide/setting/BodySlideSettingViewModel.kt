@@ -7,6 +7,7 @@ import com.bellminp.diet.domain.model.FoodData
 import com.bellminp.diet.domain.usecase.GetDietDataUseCase
 import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.data.BodyImageData
+import com.bellminp.diet.ui.data.BodySlideData
 import com.bellminp.diet.utils.Constants
 import com.bellminp.diet.utils.DelegateLiveData
 import com.bellminp.diet.utils.SingleLiveEvent

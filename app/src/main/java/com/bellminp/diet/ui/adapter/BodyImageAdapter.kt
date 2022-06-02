@@ -2,6 +2,7 @@ package com.bellminp.diet.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bellminp.diet.databinding.ItemBodyImageBinding
@@ -46,6 +47,12 @@ class BodyImageAdapter(private val onClick : (dietData: DietData) -> Unit) : Rec
 
         fun bind(dietData: DietData){
             binding.model = dietData
+
+            binding.viewTop.visibility = if(adapterPosition == 0 || adapterPosition == 1) View.VISIBLE
+            else View.GONE
+
+            binding.viewBottom.visibility = if(adapterPosition == itemCount - 1) View.VISIBLE
+            else View.GONE
 
             binding.layout.setOnClickListener {
                 onClick(dietData)

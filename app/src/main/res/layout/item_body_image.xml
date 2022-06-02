@@ -21,13 +21,22 @@
         android:layout_marginTop="10dp"
         tools:ignore="SpUsage">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:id="@+id/view_top"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            />
+
         <com.bellminp.diet.ui.custom.RadiusImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="H,1:1"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_top"
             setImageDetail="@{model.body}"
             />
 
@@ -44,6 +53,15 @@
             app:layout_constraintEnd_toEndOf="@id/iv_image"
             android:text="@{model.dateText}"
             android:gravity="center"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/view_bottom"
+            app:layout_constraintTop_toBottomOf="@id/tv_type"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

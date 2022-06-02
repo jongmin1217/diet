@@ -1,5 +1,6 @@
 package com.bellminp.diet.ui.body_slide.setting
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.bellminp.diet.R
@@ -9,6 +10,8 @@ import com.bellminp.diet.ui.adapter.BodyImageAdapter
 import com.bellminp.diet.ui.adapter.FoodImageAdapter
 import com.bellminp.diet.ui.base.BaseActivity
 import com.bellminp.diet.ui.body_image.BodyImageViewModel
+import com.bellminp.diet.ui.body_slide.show.BodySlideShowActivity
+import com.bellminp.diet.ui.data.BodySlideData
 import com.bellminp.diet.ui.dialog.date.BottomDateDialog
 import com.bellminp.diet.ui.dialog.date.BottomDateViewModel
 import com.bellminp.diet.ui.top.TopViewModel
@@ -53,6 +56,17 @@ class BodySlideSettingActivity : BaseActivity<ActivityBodySlideSettingBinding,Bo
 
         binding.btnEndDate.setOnClickListener {
             BottomDateDialog(if(viewModel.endDate.value == "") null else viewModel.endDate.value, Constants.END_DATE).show(supportFragmentManager, "date")
+        }
+
+        binding.btnView.setOnClickListener {
+            val intent = Intent(this,BodySlideShowActivity::class.java)
+            intent.putExtra(Constants.DATA, BodySlideData(adapter.items,when{
+                viewModel.check1.value == true -> 1000
+                viewModel.check2.value == true -> 2000
+                viewModel.check3.value == true -> 3000
+                else -> 0
+            }))
+            startActivity(intent)
         }
     }
 

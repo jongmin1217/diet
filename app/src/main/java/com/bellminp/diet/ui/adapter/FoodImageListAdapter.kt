@@ -12,6 +12,7 @@ import com.bellminp.diet.domain.model.DietData
 import com.bellminp.diet.ui.base.BaseViewModel
 import com.bellminp.diet.ui.write_type.WriteTypeViewModel
 import com.bellminp.diet.utils.BindAdapter
+import timber.log.Timber
 
 class FoodImageListAdapter(
     private val viewModel : BaseViewModel
@@ -23,6 +24,8 @@ class FoodImageListAdapter(
             field = value
             notifyDataSetChanged()
         }
+
+    val adapterMap = HashMap<Int,FoodImageAdapter>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemFoodImageListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -60,10 +63,11 @@ class FoodImageListAdapter(
             else View.GONE
 
             val adapter = FoodImageAdapter(viewModel)
-            BindAdapter.dateFoodAdapter(binding.recyclerviewDateFood, adapter)
+
             dietData.food?.let {
                 adapter.items = it
             }
+            BindAdapter.dateFoodAdapter(binding.recyclerviewDateFood, adapter)
         }
     }
 }

@@ -13,6 +13,7 @@ import com.bellminp.diet.ui.food_image_list.FoodImageListViewModel
 import com.bellminp.diet.ui.top.TopViewModel
 import com.bellminp.diet.utils.BindAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class BodyImageActivity : BaseActivity<ActivityBodyImageBinding,BodyImageViewModel>(R.layout.activity_body_image) {
@@ -54,7 +55,7 @@ class BodyImageActivity : BaseActivity<ActivityBodyImageBinding,BodyImageViewMod
                 val lastPosition = layoutManager.findLastVisibleItemPosition()
                 val size = adapter.itemCount
 
-                if(lastPosition > size-7 && !viewModel.loading){
+                if(lastPosition > size-4 && !viewModel.loading){
                     viewModel.getBodyImage(true)
                 }
             }

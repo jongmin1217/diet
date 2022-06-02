@@ -133,15 +133,13 @@ object BindAdapter {
     }
 
     fun dateFoodAdapter(recyclerview: RecyclerView,adapter : FoodImageAdapter) {
-        if(recyclerview.adapter == null){
-            if (!adapter.hasObservers()) adapter.setHasStableIds(true)
+        if (!adapter.hasObservers()) adapter.setHasStableIds(true)
 
-            recyclerview.layoutManager = GridLayoutManager(recyclerview.context, 4)
-            recyclerview.adapter = adapter
-            val animator = recyclerview.itemAnimator
-            if (animator is SimpleItemAnimator) {
-                animator.supportsChangeAnimations = false
-            }
+        recyclerview.layoutManager = GridLayoutManager(recyclerview.context, 4)
+        recyclerview.adapter = adapter
+        val animator = recyclerview.itemAnimator
+        if (animator is SimpleItemAnimator) {
+            animator.supportsChangeAnimations = false
         }
     }
 
